@@ -6,6 +6,8 @@ import logo from "../../../../assets/logo_green.svg";
 import card_arrow from "../../../../assets/card_arrow.svg";
 
 const CategoryCard = ({ service, selectedSteps }) => {
+  console.log(service);
+
   const [cardHeight, setCardHeight] = useState("auto");
   const cardRef = useRef(null);
   const navigate = useNavigate();

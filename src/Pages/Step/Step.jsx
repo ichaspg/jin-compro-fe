@@ -1,23 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation to get the passed state
+import { useLocation } from "react-router-dom";
 import Mailer from "../../Component/Mailer/Mailer";
 import Footer from "../../Component/Footer/Footer";
 
 export default function Step() {
   const containerRef = useRef(null);
   const location = useLocation();
-
-  // Retrieve the title and selectedSteps passed from the previous component
   const { title, selectedSteps } = location.state || {
     title: "",
     selectedSteps: [],
   };
 
-  // Extract the steps data from the selectedSteps
   const stepData = selectedSteps.data;
 
-  // Filter the steps that match the selected service title
   const filteredSteps = stepData.filter(
     (step) => step.attributes.service.data.attributes.title === title
   );
@@ -26,7 +22,6 @@ export default function Step() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    // Extract the necessary fields from the step
     const { title: stepTitle, description } = step.attributes;
 
     return (
@@ -44,7 +39,7 @@ export default function Step() {
         <div className="py-8">
           <div className="flex gap-6 items-center text-primary-white mb-3">
             <span className="text-6xl font-medium text-primary-orange">
-              {String(index + 1).padStart(2, "0")} {/* Step numbering */}
+              {String(index + 1).padStart(2, "0")}
             </span>
             <h3 className="text-6xl font-bold">{stepTitle}</h3>
           </div>

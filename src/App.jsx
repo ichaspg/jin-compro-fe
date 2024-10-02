@@ -182,11 +182,7 @@ function App() {
   const MainContent = () => (
     <>
       <Hero />
-      <Speciality
-        categories={categories}
-        services={services}
-        steps={steps.data}
-      />
+      <Speciality categories={categories} services={services} steps={steps} />
       <Work works={works} />
       <Partner />
       <Mailer />
