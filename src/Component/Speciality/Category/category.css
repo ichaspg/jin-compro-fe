@@ -1,0 +1,82 @@
+.category-list {
+  @apply flex flex-col p-5 gap-2 w-full;
+  overflow: hidden;
+}
+
+.category-item {
+  @apply flex items-center relative w-full p-5 no-underline overflow-hidden;
+  position: relative; /* Ensure relative positioning for pseudo-elements */
+
+  &::before,
+  &::after {
+    content: "";
+    @apply absolute left-0 bottom-0 h-0.5 w-full;
+    transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out;
+  }
+
+  &::before {
+    background-color: #d9683c; /* Default color */
+  }
+
+  &::after {
+    background-color: #e8ecee; /* Hover color */
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  &.active::after {
+    transform: scaleX(0); /* Hide transition when active */
+    transform-origin: bottom right;
+  }
+
+  &:hover::after,
+  &.active::after {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+}
+
+.category-title {
+  @apply text-3xl text-secondary-white font-medium relative;
+}
+
+.category-icon {
+  @apply w-12 h-12 mr-4;
+}
+
+.category-arrow {
+  @apply w-12 h-12 ml-auto;
+}
+
+.service__card-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 20px;
+}
+
+.category-menu-container {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #d9683c #f5f5f5; /* Firefox */
+  overflow: hidden;
+}
+
+/* WebKit-based browsers */
+.category-menu-container::-webkit-scrollbar {
+  height: 8px; /* Scrollbar height */
+}
+
+.category-menu-container::-webkit-scrollbar-thumb {
+  background-color: #d9683c; /* Scrollbar thumb color */
+  border-radius: 4px;
+}
+
+.category-menu-container::-webkit-scrollbar-track {
+  background-color: #f5f5f5; /* Scrollbar track color */
+}
+.category-menu {
+  /* Ensure horizontal layout */
+  display: flex;
+  gap: 10px;
+  position: sticky;
+  min-width: 90%;
+}

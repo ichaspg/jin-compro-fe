@@ -1,0 +1,30 @@
+.hero__bg {
+  background: rgb(1, 90, 106);
+  background: linear-gradient(
+    0deg,
+    rgba(1, 90, 106, 1) 0%,
+    rgba(217, 104, 60, 0.9248074229691877) 100%
+  );
+  margin-bottom: -1px;
+}
+
+.hero__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 1px solid #e8ecee;
+  width: 3rem;
+  height: 3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero__button-img {
+  transition: stroke 0.3s ease-in-out;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  z-index: 10;
+}

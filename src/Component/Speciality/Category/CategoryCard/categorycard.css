@@ -1,0 +1,49 @@
+.card-container {
+  @apply flex lg:flex-row lg:mt-3 lg:gap-5 flex-col items-start text-lg;
+}
+
+.service-card {
+  @apply flex flex-col gap-5 bg-secondary-white rounded-lg min-h-[400px] min-w-[280px] max-w-[280px] transition-transform duration-300 cursor-pointer mt-2;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header {
+  @apply flex flex-row justify-between pt-4 pr-4 pl-4 pb-0;
+  position: relative;
+  z-index: 1;
+}
+
+.card-header_logo {
+  width: 30px;
+}
+
+.card-content {
+  @apply flex flex-col gap-3 px-4 m-0;
+}
+
+.content-title {
+  @apply text-lg font-medium;
+}
+
+.content-desc {
+  @apply text-sm;
+}
+.card-footer {
+  @apply flex bg-primary-orange mt-auto;
+  width: 100%;
+  height: 80px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  position: relative;
+  z-index: 1;
+}
+.rotate-on-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate-on-hover:hover {
+  transform: rotate(45deg);
+}

@@ -1,0 +1,40 @@
+.header {
+  position: fixed;
+  left: 50px;
+  right: 50px;
+  top: 50px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.header__logo {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  padding-top: 0;
+}
+
+.header__logo img {
+  max-height: 40px;
+  width: auto;
+}
+
+.header__right {
+  position: relative;
+}
+
+.header__menu {
+  width: 480px;
+  height: 600px;
+  background-color: #e8ecee;
+  border-radius: 25px;
+  position: absolute;
+}
+
+.header.scrolled {
+  background-color: black;
+}

@@ -1,0 +1,21 @@
+.workcard__card {
+  @apply w-fit h-fit flex flex-col;
+  background-color: #064d5a;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #e8ecee;
+}
+
+.workcard__img {
+  @apply w-[653px] h-[434px] p-3 rounded-2xl;
+  object-fit: cover;
+}
+
+.workcard__header {
+  @apply flex justify-between items-center p-3;
+}
+
+.workcard__container {
+  @apply flex flex-col;
+}

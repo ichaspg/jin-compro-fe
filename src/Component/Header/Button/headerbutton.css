@@ -1,0 +1,72 @@
+.header__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.header__button-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header__button-el {
+  width: 100%;
+  height: 100%;
+  background-color: #e8ecee;
+}
+
+.header__button-el p {
+  margin: 0;
+}
+
+.header__button-el:nth-of-type(2) {
+  background-color: #015a6a;
+}
+
+.header__button-el:nth-of-type(2) p {
+  color: #e8ecee;
+}
+
+.header__button-el:hover .header__button-perstext {
+  transform: rotateX(75deg);
+}
+
+.header__button-el:hover .header__button-perstext p:nth-of-type(1) {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.header__button-el:hover .header__button-perstext p:nth-of-type(2) {
+  opacity: 1;
+}
+
+.header__button-perstext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+  color: #015a6a;
+}
+
+.header__button-perstext p {
+  transition: all 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.header__button-perstext p:nth-of-type(2) {
+  position: absolute;
+  transform-origin: bottom center;
+  transform: rotateX(-90deg) translateY(9px);
+  opacity: 0;
+}

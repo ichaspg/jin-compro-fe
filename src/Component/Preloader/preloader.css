@@ -1,0 +1,50 @@
+/* preloader.css */
+
+.preloader__introduction {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 4000;
+  background-color: #015a6a;
+  transition: background-color 0.7s ease;
+}
+
+.preloader__introduction.gradient {
+  background: linear-gradient(
+    0deg,
+    rgba(1, 90, 106, 1) 0%,
+    rgba(217, 104, 60, 0.9248074229691877) 100%
+  ); /* Gradient background */
+}
+
+.preloader__introduction svg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: calc(100% + 300px);
+}
+
+.preloader__introduction path {
+  fill: #015a6a;
+}
+
+.preloader__introduction p {
+  display: flex;
+  color: white;
+  font-size: 42px;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.preloader__introduction span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 10px;
+}

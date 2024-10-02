@@ -1,0 +1,15 @@
+.partner__container {
+  @apply border-t border-b border-secondary-white py-4;
+  background: #015a6a;
+  margin-top: -1px;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.partner__slider {
+  display: flex;
+  align-items: center;
+}
+
+.partner__slider > div {
+  flex-shrink: 0;
+}
