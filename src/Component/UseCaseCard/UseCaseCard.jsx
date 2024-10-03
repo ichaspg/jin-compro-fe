@@ -1,13 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BASE_API } from "../../constant/endpoint";
-
+import arrow_right from "../../assets/arrow_right.svg";
 const UseCaseCard = ({ title, summary, desc, date, img }) => {
   const navigate = useNavigate();
   const firstImageUrl = img?.[0]?.attributes?.url;
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Custom date formatting: "01 Jan 2024"
   const formattedDate = new Date(date).toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "short",
@@ -15,7 +15,6 @@ const UseCaseCard = ({ title, summary, desc, date, img }) => {
   });
 
   const handleNavigate = () => {
-    // Navigate to a detailed page, passing the use case data through the state
     navigate("/showcasedetail", {
       state: { title, summary, desc, date, img },
     });
@@ -63,28 +62,54 @@ const UseCaseCard = ({ title, summary, desc, date, img }) => {
         {summary}
       </div>
 
-      {/* Button at the bottom */}
-      <motion.button
-        className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center mt-auto ml-auto cursor-pointer"
-        whileHover={{ rotate: 90, scale: 1.1 }}
-        transition={{ duration: 0.2 }}
-        onClick={handleNavigate}
+      {/* Button with hover effect */}
+      <motion.div
+        className="relative flex justify-end"
+        initial={false}
       >
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"
-          ></path>
-        </svg>
-      </motion.button>
+          <motion.button
+          onClick={handleNavigate}
+            className={`submit-button mt-8 py-2 bg-primary-green rounded-full flex items-center overflow-hidden ${
+              isHovered ? "justify-between" : "justify-center"
+            }`}
+            initial={{ width: "56px" }}
+            whileHover={{ width: "168px" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+          >
+            <motion.span
+              className="button-text whitespace-nowrap ml-5 text-lg font-bold text-primary-white flex"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {"Learn More".split("").map((letter, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.05,
+                    ease: "easeOut",
+                  }}
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.span>
+
+            <motion.img
+              src={arrow_right}
+              alt="Submit arrow"
+              className="size-8 mr-[120px]"
+              initial={{ x: 5 }}
+              animate={isHovered ? { x: 20 } : { x: 0 } }
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            />
+          </motion.button>
+      </motion.div>
     </div>
   );
 };
