@@ -44,7 +44,7 @@
 }
 
 .project-grid-item {
-  @apply flex bg-primary-orange rounded-2xl p-5;
+  @apply flex bg-primary-white rounded-2xl p-5;
 }
 .project-grid-item .img-lg {
   @apply flex;

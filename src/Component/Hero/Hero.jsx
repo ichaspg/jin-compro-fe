@@ -10,13 +10,14 @@ const Hero = () => {
   const handleClick = () => {
     navigate(`/projects`);
   };
+
   return (
     <div className="hero__bg" data-scroll-section>
       <div className="flex flex-col justify-center items-center h-screen">
-        <span className="font-bold text-6xl text-center text-white max-w-screen-lg">
+        <span className="font-bold text-4xl sm:text-32xl lg:text-6xl text-center text-white max-w-screen-lg">
           Connecting Your World <br /> Seamlessly
         </span>
-        <span className="font-normal text-base text-center text-white mt-5 max-w-screen-md">
+        <span className="font-normal text-sm md:text-base lg:text-lg text-center text-white mt-5 max-w-screen-md">
           At our core, we are committed to seamlessly connecting your world
           through innovative technology solutions.
         </span>
