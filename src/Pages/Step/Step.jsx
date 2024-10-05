@@ -41,7 +41,7 @@ export default function Step() {
             <span className="text-6xl font-medium text-primary-orange">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="text-6xl font-bold">{stepTitle}</h3>
+            <h3 className="text-3xl lg:text-6xl font-bold leading-none">{stepTitle}</h3>
           </div>
           <p className="text-white/70 text-sm leading-relaxed max-w-xl pl-[6rem]">
             {description}
