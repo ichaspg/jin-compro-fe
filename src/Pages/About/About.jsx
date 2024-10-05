@@ -8,6 +8,7 @@ import Mailer from "../../Component/Mailer/Mailer";
 import Section from "../../Component/Anim/Section";
 import Footer from "../../Component/Footer/Footer";
 import { useNavigate } from "react-router-dom";
+
 const About = () => {
   const navigate = useNavigate();
 
@@ -19,17 +20,19 @@ const About = () => {
       window.locomotiveScroll.update();
     }
   }, []);
+  
   return (
     <>
       <Section>
         <div data-scroll-section className="max-container padding">
-          <div className="py-20 bg-primary-orange h-content rounded-2xl my-20 items-center flex flex-col ">
+          {/* Main Introduction Section */}
+          <div className="py-20 bg-primary-orange h-content rounded-2xl my-20 items-center flex flex-col">
             <div className="flex flex-col gap-2 justify-center items-center">
-              <p className="text-4xl text-primary-white font-bold tracking-wide leading-none text-center w-2/3">
+              <p className="text-4xl text-primary-white font-bold tracking-wide leading-none text-center md:w-2/3">
                 Effortlessly Connecting Your World, Creating Seamless
                 Experiences Everywhere
               </p>
-              <p className="text-xl text-secondary-white font-light py-2 w-1/2 text-center">
+              <p className="text-xl text-secondary-white font-light py-2 md:w-1/2 text-center">
                 At our core, we are dedicated to seamlessly connecting your
                 world by delivering cutting-edge technology solutions that
                 simplify and enhance your everyday experiences.
@@ -45,52 +48,52 @@ const About = () => {
               </motion.button>
             </div>
           </div>
+
+          {/* Our Values Section */}
           <div className="self-start">
-            <div className="flex flex-row">
+            <div className="flex flex-col md:flex-row">
               <div className="mx-12">
-                <div className="">
-                  <p className="text-xl mb-4 ml-2 text-primary-white tracking-wide">
-                    Our Values
-                  </p>
-                  <p className="text-6xl w-[500px] text-primary-white font-medium tracking-tighter ">
-                    Connecting Solutions, Empowering Success.
-                  </p>
-                  <p className="w-[500px] mt-4 text-primary-white font-light">
-                    At Jaya Integrasi, we specialize in delivering seamless
-                    integration solutions that connect your business systems
-                    effortlessly. With a focus on innovation and reliability, we
-                    help streamline your operations, ensuring that your
-                    technology works in harmony to drive efficiency and growth.
-                  </p>
-                </div>
+                <p className="text-xl mb-4 ml-2 text-primary-white tracking-wide">
+                  Our Values
+                </p>
+                <p className="text-4xl md:text-6xl text-primary-white font-medium tracking-tighter">
+                  Connecting Solutions, Empowering Success.
+                </p>
+                <p className="mt-4 text-primary-white font-light max-w-xl">
+                  At Jaya Integrasi, we specialize in delivering seamless
+                  integration solutions that connect your business systems
+                  effortlessly. With a focus on innovation and reliability, we
+                  help streamline your operations, ensuring that your
+                  technology works in harmony to drive efficiency and growth.
+                </p>
               </div>
-              <div className="">
-                <img src={team} alt="" className="size-50 rounded-xl" />
+              <div className="mt-4 md:mt-0">
+                <img src={team} alt="Team" className="w-full md:w-[400px] rounded-xl lg:w-[716px]" />
               </div>
             </div>
           </div>
+
+          {/* Our Mission Section */}
           <div className="self-end mt-20">
-            <div className="flex flex-row">
-              <div className="mx-12">
-                <img src={team} alt="" className="w-[716px] rounded-xl" />
+            <div className="flex flex-col md:flex-row">
+              <div className="mt-4 md:mt-0 mx-12">
+                <img src={team} alt="Team" className="w-full md:w-[400px] rounded-xl lg:w-[716px]" />
               </div>
-              <div className="">
-                <div className="">
-                  <p className="text-xl mb-4 ml-2 text-primary-white tracking-wide text-right">
-                    Our Mission
-                  </p>
-                  <p className="text-6xl w-[500px] text-primary-white font-medium tracking-tighter text-right">
-                    Seamless Integration, Lasting Impact.
-                  </p>
-                  <p className="w-[500px] mt-4 text-primary-white font-light text-right">
-                    Our mission is to deliver innovative integration solutions
-                    that empower businesses to operate efficiently, securely,
-                    and seamlessly. We are committed to fostering long-term
-                    success by connecting technology with business goals,
-                    ensuring smooth, scalable, and reliable operations for our
-                    clients.
-                  </p>
-                </div>
+              <div className="text-center md:text-right">
+                <p className="text-xl mb-4 ml-2 text-primary-white tracking-wide">
+                  Our Mission
+                </p>
+                <p className="text-4xl md:text-6xl text-primary-white font-medium tracking-tighter">
+                  Seamless Integration, Lasting Impact.
+                </p>
+                <p className="mt-4 text-primary-white font-light max-w-xl">
+                  Our mission is to deliver innovative integration solutions
+                  that empower businesses to operate efficiently, securely,
+                  and seamlessly. We are committed to fostering long-term
+                  success by connecting technology with business goals,
+                  ensuring smooth, scalable, and reliable operations for our
+                  clients.
+                </p>
               </div>
             </div>
           </div>

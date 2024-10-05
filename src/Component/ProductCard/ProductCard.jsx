@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { BASE_API } from "../../constant/endpoint";
 
@@ -15,7 +14,7 @@ const ProductCard = ({ title, img, desc, summary, useCase }) => {
   };
   return (
     <motion.div
-      className="relative w-[600px] h-[480px] rounded-lg overflow-hidden cursor-pointer"
+      className="relative lg:w-[600px] h-[480px] rounded-lg overflow-hidden cursor-pointer"
       whileHover="hovered"
       initial="initial"
       variants={{
@@ -37,7 +36,7 @@ const ProductCard = ({ title, img, desc, summary, useCase }) => {
       <motion.div
         className="absolute inset-x-0 bottom-0 bg-black/50"
         variants={{
-          initial: { height: "3rem" },
+          initial: { height: "5rem" },
           hovered: { height: "100%" },
         }}
         transition={{ duration: 0.9, ease: "easeInOut" }}

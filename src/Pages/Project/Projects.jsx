@@ -42,21 +42,24 @@ const Projects = ({ works, categories }) => {
       <Section>
         <div className="max-container w-full padding" data-scroll-section>
           <div className="max-container">
-            <div className="flex flex-col text-6xl font-bold justify-center items-center padding text-primary-white gap-2">
+            <div className="flex flex-col text-2xl lg:text-6xl font-bold justify-center items-center padding text-primary-white gap-2 mt-5">
               <p>YOUR TRUSTED</p>
-              <div className="flex">
+              <div className="flex flex-col sm:flex-row items-center">
                 <p>INTEGRATION</p>
-                <img src={logo} alt="" className="mx-4" />
+                <img
+                  src={logo}
+                  alt=""
+                  className="mx-4 w-8 h-8 sm:w-24 sm:h-24 lg:w-auto lg:h-auto"
+                />
                 <p>PARTNER</p>
               </div>
-              <p className="text-lg font-light w-[717px] text-center my-4">
+              <p className="text-lg font-light w-full sm:w-[90%] md:w-[717px] text-center my-4 mx-2">
                 Here is a showcase of the projects we've successfully completed
                 in the past, highlighting our expertise and accomplishments.
               </p>
             </div>
             <div className="project__work_container">
-          
-              <div className="project__category_container">
+              <div className="project__category_container flex flex-wrap justify-center gap-2 my-4">
                 <div className="project__category_item">
                   <button
                     className={`project__category_button ${
@@ -86,15 +89,13 @@ const Projects = ({ works, categories }) => {
                   ))}
               </div>
 
-              <div className="project__card_container">
+              <div className="project__card_container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 <AnimatePresence>
                   {filteredWorks.length > 0 ? (
                     filteredWorks.map((work, i) => (
                       <motion.div
                         key={`p_${i}`}
-                        className={`project-grid-item ${
-                          i % 3 === 2 ? "project-grid-item" : ""
-                        }`}
+                        className={`project-grid-item`}
                         variants={cardVariants}
                         initial="hidden"
                         animate="visible"
@@ -112,7 +113,7 @@ const Projects = ({ works, categories }) => {
                       </motion.div>
                     ))
                   ) : (
-                    <p>No projects available</p>
+                    <p className="text-center col-span-full">No projects available</p>
                   )}
                 </AnimatePresence>
               </div>

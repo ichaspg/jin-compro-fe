@@ -5,10 +5,9 @@ import "./speciality.css";
 const Speciality = ({ services, updateScroll, steps }) => {
   return (
     <div className="speciality__container" data-scroll-section id="service">
-      <div className="flex flex-col padding max-container h-full">
+      <div className="flex flex-col px-4 md:px-8 lg:px-16 max-w-7xl mx-auto h-full">
         <div
-          className="text-white text-4xl font-light"
-          style={{ lineHeight: "1.2" }}
+          className="text-white font-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug md:leading-tight ml-2"
         >
           OUR SPECIALITY <br /> PROVIDED SPECIALLY FOR YOU
         </div>

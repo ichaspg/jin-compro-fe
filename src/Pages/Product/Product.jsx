@@ -13,10 +13,10 @@ const Product = ({ products }) => {
       <Section>
         <div className="max-container w-full padding" data-scroll-section>
           <div className="padding-y">
-            <p className="font-bold text-5xl text-primary-white tracking-wider leading-none w-[800px]">
+            <p className="font-bold mt-5 text-3xl lg:text-5xl text-primary-white tracking-wider leading-none lg:w-[800px]">
               ELEVATE YOUR GAME AND SOAR WITH THIS BREAKTHROUGH PRODUCT
             </p>
-            <p className="font-light text-secondary-white w-[500px] my-5">
+            <p className="font-light text-secondary-white lg:w-[500px] my-5">
               Take your performance to the next level with this revolutionary
               product, designed to help you reach new heights effortlessly!
             </p>

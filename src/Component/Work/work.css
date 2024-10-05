@@ -1,34 +1,74 @@
+/* work.css */
 .work__container {
-  background-color: #015a6a;
-  position: relative;
-  inset: 0;
-  height: 100%;
-  width: 100%;
+  @apply relative w-full bg-[#015a6a] overflow-hidden;
+  margin-top: -1px;
   background-image: linear-gradient(to right, #80808012 1px, transparent 1px),
     linear-gradient(to bottom, #80808012 1px, transparent 1px);
   background-size: 100px 100px;
-  margin-top: -1px;
 }
 
-.work-grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: auto;
-  gap: 30px;
-  width: fit-content;
+.work__content {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8 py-12;
 }
 
-.work-grid-item-large {
-  grid-column: span 2;
-  @apply w-fit h-fit flex flex-col;
-  background-color: #064d5a;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  border: 1px solid #e8ecee;
+.work__header {
+  @apply flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8;
 }
 
-.work-grid-item-large .workcard__img {
-  @apply w-[1357px] h-[850px] p-3 rounded-xl;
-  object-fit: cover;
+.work__header-arrow {
+  @apply w-8 sm:w-10 h-auto;
 }
+
+.work__header-title {
+  @apply text-2xl sm:text-3xl lg:text-4xl 
+         tracking-wide text-secondary-white font-light;
+}
+
+.work__grid {
+  @apply grid gap-4 sm:gap-6 lg:gap-8
+         grid-cols-1 sm:grid-cols-2 
+         auto-rows-auto w-full;
+}
+
+.work__grid-item {
+  @apply w-full transition-transform duration-300 
+         hover:transform hover:scale-[1.02];
+}
+
+.work__grid-item--large {
+  @apply col-span-1 sm:col-span-2;
+}
+
+/* Large screen optimizations */
+@media (min-width: 1024px) {
+  .work__grid {
+    @apply gap-8;
+  }
+
+  .work__grid-item--large .workcard__img {
+    @apply aspect-video w-full max-h-[850px] object-cover p-3 rounded-xl;
+  }
+}
+
+/* Medium screen adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .work__grid-item--large .workcard__img {
+    @apply aspect-video w-full max-h-[600px] object-cover p-2 rounded-lg;
+  }
+}
+
+/* Small screen adjustments */
+@media (max-width: 767px) {
+  .work__grid {
+    @apply grid-cols-1;
+  }
+
+  .work__grid-item--large {
+    @apply col-span-1;
+  }
+
+  .work__grid-item--large .workcard__img {
+    @apply aspect-video w-full max-h-[400px] object-cover p-2 rounded-lg;
+  }
+}
+

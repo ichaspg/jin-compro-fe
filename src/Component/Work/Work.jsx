@@ -7,7 +7,6 @@ const Work = (works) => {
   const featuredWorksData = worksData?.filter(
     (work) => work.attributes.Featured === true
   );
-  
 
   if (!worksData) {
     console.log("No works data available");
@@ -15,28 +14,34 @@ const Work = (works) => {
   }
 
   return (
-    <div className="work__container" data-scroll-section>
+    <section className="work__container" data-scroll-section>
       <div className="work__content max-container padding">
-        <div className="flex flex-row gap-3">
-          <img src={arrow} alt="" />
-          <p className="text-4xl tracking-wide text-secondary-white font-light">
+        <div className="work__header">
+          <img 
+            src={arrow} 
+            alt="Featured Works Arrow" 
+            className="work__header-arrow"
+          />
+          <h2 className="work__header-title">
             OUR FEATURED WORKS
-          </p>
+          </h2>
         </div>
-        <div className="work__body work-grid-container py-6">
+
+        <div className="work__grid">
           {featuredWorksData.map((work, i) => {
-            const categoryTitle =
-              work.attributes.category.data.attributes.title;
-            const imageUrl = work.attributes.image?.data;
-            const title = work.attributes.title;
-            const description = work.attributes?.description;
-            const summary = work.attributes.summary;
+            const {
+              category: { data: { attributes: { title: categoryTitle } } },
+              image: { data: imageUrl },
+              title,
+              description,
+              summary
+            } = work.attributes;
 
             return (
               <div
-                key={`p_${i}`}
-                className={`work-grid-item ${
-                  i % 3 === 2 ? "work-grid-item-large" : ""
+                key={`work_${i}`}
+                className={`work__grid-item ${
+                  i % 3 === 2 ? 'work__grid-item' : ''
                 }`}
               >
                 <WorkCard
@@ -52,7 +57,7 @@ const Work = (works) => {
           })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

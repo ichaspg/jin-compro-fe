@@ -43,13 +43,12 @@ const ProductDetail = ({ products, useCases, locomotiveInstance }) => {
   return (
     <Section key={location.key}>
       {" "}
-      {/* Use location.key to force full re-render */}
       <div className="max-container w-full padding" data-scroll-section>
         <div className="mt-10">
-          <h1 className="text-4xl font-bold tracking-wide text-primary-white">
+          <h1 className="pt-5 text-4xl font-bold tracking-wide text-primary-white">
             {title || "Product Title"}
           </h1>
-          <p className="text-xl font-light text-primary-white w-5/12 my-2">
+          <p className="text-xl font-light text-primary-white lg:w-5/12 my-2">
             {summary || "Short description"}
           </p>
         </div>
@@ -60,8 +59,8 @@ const ProductDetail = ({ products, useCases, locomotiveInstance }) => {
 
         <div className="flex flex-col py-10">
           <div className="flex gap-5">
-            <img src={arrow} alt="" />
-            <p className="text-4xl text-primary-white font-light">WHAT WE DO</p>
+            <img src={arrow} alt="" className="lg:size-max size-1/12"/>
+            <p className="text-2xl lg:text-4xl text-primary-white font-light">WHAT WE DO</p>
           </div>
           <p className="text-primary-white text-xl my-2">
             {desc || "Detailed description about the product..."}
@@ -70,7 +69,7 @@ const ProductDetail = ({ products, useCases, locomotiveInstance }) => {
 
         <div className="flex flex-col items-end">
           <div className="flex flex-row gap-5 items-center">
-            <p className="text-4xl text-primary-white font-light">
+            <p className="text-2xl lg:text-4xl  text-primary-white font-light">
               WHAT WE USE THE PRODUCT FOR
             </p>
             <img src={arrow} alt="" className="rotate-180" />
@@ -93,13 +92,13 @@ const ProductDetail = ({ products, useCases, locomotiveInstance }) => {
         <div className="flex flex-col mt-10">
           <div className="flex gap-5">
             <img src={arrow} alt="" />
-            <p className="text-4xl text-primary-white font-light">
+            <p className="text-2xl lg:text-4xl  text-primary-white font-light">
               SEE ANOTHER PRODUCT
             </p>
           </div>
         </div>
 
-        <div className="flex justify-center items-center">
+        <div className="lg:flex lg:justify-center lg:items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-5">
             {featuredProducts.map((product) => (
               <ProductCard

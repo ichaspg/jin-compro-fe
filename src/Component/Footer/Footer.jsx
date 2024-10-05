@@ -37,9 +37,9 @@ const Footer = () => {
     <div className="footer__container" data-scroll-section>
       <div className="max-container padding">
         <div className="flex flex-col gap3 ">
-          <p className="text-lg text-primary-white">ready to collaborate?</p>
+          <p className="text-sm lg:text-lg text-primary-white">ready to collaborate?</p>
           <motion.div
-            className="text-8xl font-bold tracking-tighter cursor-pointer w-fit"
+            className="lg:text-8xl font-bold tracking-tighter cursor-pointer w-fit text-3xl"
             onClick={handleEmailClick}
             onHoverStart={handleHoverStart}
             onHoverEnd={handleHoverEnd}

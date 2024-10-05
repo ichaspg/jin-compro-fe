@@ -6,14 +6,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import Nav from "./Nav/Nav";
 import logo_complete from "../../assets/logo_complete.svg";
 
-const menu = {
-  open: {
-    width: "480px",
-    height: "650px",
-    top: "-25px",
-    right: "-25px",
-    transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1] },
-  },
+const menu = (isMobile) => ({
+  open: isMobile
+    ? {
+        width: "105vw", 
+        height: "105vh", 
+        top: "-70px",
+        right: "-70px", 
+        transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1] },
+      }
+    : {
+        width: "480px",
+        height: "650px",
+        top: "-25px",
+        right: "-25px",
+        transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1] },
+      },
   closed: {
     width: "100px",
     height: "40px",
@@ -26,7 +34,7 @@ const menu = {
       ease: [0.76, 0, 0.24, 1],
     },
   },
-};
+});
 
 const backgroundVariants = {
   transparent: {
@@ -46,6 +54,7 @@ const backgroundVariants = {
 export default function Header({ scrollYRef }) {
   const [isActive, setIsActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Mobile view detection
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
@@ -60,6 +69,19 @@ export default function Header({ scrollYRef }) {
   const handleCloseMenu = () => {
     setIsActive(false);
   };
+
+  // Detect screen resize to update mobile view
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -104,7 +126,7 @@ export default function Header({ scrollYRef }) {
       <div className="header__right" ref={menuRef}>
         <motion.div
           className="header__menu"
-          variants={menu}
+          variants={menu(isMobile)} // Pass the isMobile state here
           animate={isActive ? "open" : "closed"}
           initial="closed"
         >

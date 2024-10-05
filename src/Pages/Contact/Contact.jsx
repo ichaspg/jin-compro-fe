@@ -25,142 +25,77 @@ const Contact = () => {
       [name]: value,
     }));
   };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
   };
+  
   return (
     <>
       <Section>
         <div className="max-container padding" data-scroll-section>
-          <div className="bg-primary-white w-full rounded-xl border-black my-20 p-14 flex flex-row">
-            <div className="flex flex-col gap-10">
-              <div className="">
+          <div className="bg-primary-white w-full rounded-xl border-black my-20 p-5 md:p-10 lg:p-14 flex flex-col lg:flex-row">
+            <div className="flex flex-col gap-10 mb-10 lg:mb-0">
+              <div>
                 <img src={logo} alt="" className="size-20" />
               </div>
-              <div className="flex flex-row">
-                <img src={chat} alt="" className="size-10 my-3 mr-3" />
-                <div className="flex flex-col">
-                  <p className="font-medium text-lg">Chat to us</p>
-                  <p className="text-sm">Our team is ready to help.</p>
-                  <p className="text-xl font-bold my-2">
-                    code@jayaintegrasi.com
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-row">
-                <img src={map} alt="" className="size-10 size-10 my-3 mr-3" />
-                <div className="flex flex-col">
-                  <p className="font-medium text-lg">Visit Us</p>
-                  <p>Come to our office and have a chat.</p>
-                  <p className="text-xl font-bold my-2">
-                    Fajar Raya Estate Blok A1 No.8 <br /> Cimahi Utara
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-row">
-                <img src={phone} alt="" className="size-10 size-10 my-3 mr-3" />
-                <div className="flex flex-col">
-                  <p className="font-medium text-lg">Call Us</p>
-                  <p className="text-sm">Every Day Every Hour</p>
-                  <p className="text-xl font-bold my-2">0855-7190-021</p>
-                </div>
-              </div>
+              <ContactInfo 
+                imgSrc={chat} 
+                title="Chat to us" 
+                description="Our team is ready to help." 
+                contactInfo="code@jayaintegrasi.com" 
+              />
+              <ContactInfo 
+                imgSrc={map} 
+                title="Visit Us" 
+                description="Come to our office and have a chat." 
+                contactInfo="Fajar Raya Estate Blok A1 No.8 Cimahi Utara" 
+              />
+              <ContactInfo 
+                imgSrc={phone} 
+                title="Call Us" 
+                description="Every Day Every Hour" 
+                contactInfo="0855-7190-021" 
+              />
             </div>
-            <div className="bg-primary-green w-7/12 ml-auto rounded-xl p-8">
+            <div className="bg-primary-green w-full lg:w-7/12 rounded-xl p-8">
               <div className="flex flex-col">
-                <p className="font-semibold text-4xl text-primary-white leading-none">
+                <p className="font-semibold text-3xl md:text-4xl text-primary-white leading-none">
                   Let's collaborate on your next big project.
                 </p>
-                <p className="text-xl font-light text-secondary-white tracking-wide my-3 w-2/3">
-                  Interested in learning more? Let's discuss your possible
-                  solutions.
+                <p className="text-lg md:text-xl font-light text-secondary-white tracking-wide my-3 w-full md:w-2/3">
+                  Interested in learning more? Let's discuss your possible solutions.
                 </p>
               </div>
               <form onSubmit={handleSubmit}>
                 {/* Form fields */}
+                <FormInput 
+                  label="Name" 
+                  placeholder="Johnny Doe" 
+                  type="text" 
+                  name="name" 
+                  value={formData.name} 
+                  onChange={handleChange} 
+                />
+                <FormInput 
+                  label="Email" 
+                  placeholder="JohnnyDoe@mail.com" 
+                  type="email" 
+                  name="email" 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                />
+                <FormInput 
+                  label="Phone Number" 
+                  placeholder="089221412412" 
+                  type="tel" 
+                  name="phoneNumber" 
+                  value={formData.phoneNumber} 
+                  onChange={handleChange} 
+                />
                 <div className="mt-8">
-                  <label
-                    htmlFor="name"
-                    className="my-4 block text-2xl font-medium text-primary-white"
-                  >
-                    Name
-                  </label>
-                  <motion.input
-                    placeholder="Johnny Doe"
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-2 py-2"
-                    required
-                    whileHover={{ scale: 1.05 }}
-                    whileFocus={{
-                      scale: 1.05,
-                      borderColor: "#fff",
-                      boxShadow: "0px 4px 10px rgba(255, 255, 255, 0.3)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-                <div className="mt-8">
-                  <label
-                    htmlFor="email"
-                    className="my-4 block text-2xl font-medium text-primary-white"
-                  >
-                    Email
-                  </label>
-                  <motion.input
-                    placeholder="JohnnyDoe@mail.com"
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-4 py-2"
-                    required
-                    whileHover={{ scale: 1.05 }}
-                    whileFocus={{
-                      scale: 1.05,
-                      borderColor: "#fff",
-                      boxShadow: "0px 4px 10px rgba(255, 255, 255, 0.3)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-                <div className="mt-8">
-                  <label
-                    htmlFor="phoneNumber"
-                    className="my-4 block text-2xl font-medium text-primary-white"
-                  >
-                    Phone Number
-                  </label>
-                  <motion.input
-                    placeholder="089221412412"
-                    type="tel"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                    className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-4 py-2"
-                    required
-                    whileHover={{ scale: 1.05 }}
-                    whileFocus={{
-                      scale: 1.05,
-                      borderColor: "#fff",
-                      boxShadow: "0px 0px 10px rgba(255, 255, 255, 0.3)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-                <div className="mt-8">
-                  <label
-                    htmlFor="message"
-                    className="block text-2xl font-medium text-primary-white"
-                  >
-                    Message
-                  </label>
+                  <label htmlFor="message" className="block text-2xl font-medium text-primary-white">Message</label>
                   <motion.textarea
                     placeholder="I want to build something"
                     id="message"
@@ -174,16 +109,14 @@ const Contact = () => {
                     whileFocus={{
                       scale: 1.05,
                       borderColor: "#fff",
-                      boxShadow: "0px 4px 10px rgba(255, 255, 255, 0.3)",
+                      boxShadow: "0px 0px 10px rgba(255, 255, 255, 0.3)",
                     }}
                     transition={{ duration: 0.3 }}
                   />
                 </div>
                 <motion.button
                   type="submit"
-                  className={`submit-button mt-8 py-2 bg-primary-white rounded-full flex items-center overflow-hidden ${
-                    isHovered ? "justify-between" : "justify-center"
-                  }`}
+                  className={`submit-button mt-8 py-2 bg-primary-white rounded-full flex items-center overflow-hidden ${isHovered ? "justify-between" : "justify-center"}`}
                   initial={{ width: "56px" }}
                   whileHover={{ width: "168px" }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -193,20 +126,14 @@ const Contact = () => {
                   <motion.span
                     className="button-text whitespace-nowrap ml-5 text-2xl font-bold text-primary-green flex gap-1"
                     initial={{ opacity: 0, x: -20 }}
-                    animate={
-                      isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
-                    }
+                    animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   >
                     {"SEND".split("").map((letter, index) => (
                       <motion.span
                         key={index}
                         initial={{ opacity: 0, x: -10 }}
-                        animate={
-                          isHovered
-                            ? { opacity: 1, x: 0 }
-                            : { opacity: 0, x: -10 }
-                        }
+                        animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                         transition={{
                           duration: 0.4,
                           delay: index * 0.05,
@@ -234,5 +161,43 @@ const Contact = () => {
     </>
   );
 };
+
+// Separate component for contact info
+const ContactInfo = ({ imgSrc, title, description, contactInfo }) => (
+  <div className="flex flex-row">
+    <img src={imgSrc} alt={title} className="size-10 my-3 mr-3" />
+    <div className="flex flex-col">
+      <p className="font-medium text-lg">{title}</p>
+      <p className="text-sm">{description}</p>
+      <p className="text-xl font-bold my-2">{contactInfo}</p>
+    </div>
+  </div>
+);
+
+// Separate component for form input
+const FormInput = ({ label, placeholder, type, name, value, onChange }) => (
+  <div className="mt-8">
+    <label htmlFor={name} className="my-4 block text-2xl font-medium text-primary-white">
+      {label}
+    </label>
+    <motion.input
+      placeholder={placeholder}
+      type={type}
+      id={name}
+      name={name}
+      value={value}
+      onChange={onChange}
+      className="mt-1 block w-full bg-transparent border-b border-primary-white focus:outline-none text-xl text-secondary-white my-2 py-2"
+      required
+      whileHover={{ scale: 1.05 }}
+      whileFocus={{
+        scale: 1.05,
+        borderColor: "#fff",
+        boxShadow: "0px 4px 10px rgba(255, 255, 255, 0.3)",
+      }}
+      transition={{ duration: 0.3 }}
+    />
+  </div>
+);
 
 export default Transition(Contact);

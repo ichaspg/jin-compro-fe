@@ -30,7 +30,7 @@ const UseCaseCardSm = ({ title, summary, description, date, img }) => {
   return (
     <motion.div
       ref={cardRef}
-      className="bg-gray-100 rounded-2xl p-6 w-96 relative overflow-hidden"
+      className="bg-gray-100 rounded-2xl p-6 w-64 lg:w-96 relative overflow-hidden"
       onMouseMove={handleMouseMove}
       initial="initial"
       whileHover="hover"
@@ -58,7 +58,7 @@ const UseCaseCardSm = ({ title, summary, description, date, img }) => {
         }}
       />
 
-      <div className="relative z-10">
+      <div className="relative z-10 ">
         <motion.div
           className="mb-4 w-8 h-8 flex items-center justify-center"
           variants={{
