@@ -40,18 +40,18 @@
 }
 
 .project__card_container {
-  @apply grid grid-cols-2 auto-rows-auto gap-[30px] px-12 pb-8;
+  @apply grid grid-cols-1 lg:grid-cols-2 auto-rows-auto gap-[30px] px-12 pb-8;
 }
 
 .project-grid-item {
-  @apply flex bg-primary-white rounded-2xl p-5;
+  @apply flex bg-primary-white rounded-2xl p-5 w-full;
 }
 .project-grid-item .img-lg {
   @apply flex;
 }
 
 .project-grid-item .img-lg {
-  @apply rounded-2xl min-h-[393px];
+  @apply rounded-2xl w-full md:w-full lg:w-full h-40 object-cover lg:min-h-[393px];
 }
 
 .project-grid-item-lg {
@@ -61,5 +61,5 @@
 }
 
 .project-grid-item-lg .img-lg {
-  @apply w-screen min-h-[330px] object-cover;
+  @apply w-2 lg:w-screen lg:min-h-[330px] object-cover;
 }

@@ -42,14 +42,14 @@ const Projects = ({ works, categories }) => {
       <Section>
         <div className="max-container w-full padding" data-scroll-section>
           <div className="max-container">
-            <div className="flex flex-col text-2xl lg:text-6xl font-bold justify-center items-center padding text-primary-white gap-2 mt-5">
+            <div className="flex flex-col text-4xl text-center lg:text-6xl font-bold justify-center items-center padding text-primary-white gap-2 mt-5">
               <p>YOUR TRUSTED</p>
               <div className="flex flex-col sm:flex-row items-center">
                 <p>INTEGRATION</p>
                 <img
                   src={logo}
                   alt=""
-                  className="mx-4 w-8 h-8 sm:w-24 sm:h-24 lg:w-auto lg:h-auto"
+                  className="mx-4 w-10 h-10 sm:w-auto sm:h-auto lg:w-auto lg:h-auto"
                 />
                 <p>PARTNER</p>
               </div>
@@ -89,7 +89,7 @@ const Projects = ({ works, categories }) => {
                   ))}
               </div>
 
-              <div className="project__card_container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              <div className="project__card_container ">
                 <AnimatePresence>
                   {filteredWorks.length > 0 ? (
                     filteredWorks.map((work, i) => (

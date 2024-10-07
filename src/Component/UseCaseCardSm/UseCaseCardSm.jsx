@@ -30,7 +30,7 @@ const UseCaseCardSm = ({ title, summary, description, date, img }) => {
   return (
     <motion.div
       ref={cardRef}
-      className="bg-gray-100 rounded-2xl p-6 w-64 lg:w-96 relative overflow-hidden"
+      className="bg-gray-100 rounded-2xl p-6 w-64 lg:w-96 relative overflow-hidden w-96"
       onMouseMove={handleMouseMove}
       initial="initial"
       whileHover="hover"

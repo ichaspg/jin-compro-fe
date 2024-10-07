@@ -23,7 +23,7 @@ const ImageCarousel = ({ images }) => {
   const currentImageUrl = `${BASE_API}${images[currentIndex]?.attributes?.url}`;
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative h-[500px] w-full lg:h-screen overflow-hidden">
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}

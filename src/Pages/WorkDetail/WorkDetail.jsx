@@ -65,7 +65,7 @@ const WorkDetail = () => {
               <img
                 src={`${BASE_API}${images[0]?.attributes.url}`}
                 alt=""
-                className="h-1/ rounded-lg"
+                className=" rounded-lg"
               />
             </div>
             <div className="flex flex-col py-10">
@@ -85,7 +85,7 @@ const WorkDetail = () => {
                 </p>
                 <img src={arrow} alt="" className="rotate-180" />
               </div>
-              <p className="text-right mt-2 max-w-[50%] text-primary-white text-xl">
+              <p className="text-right mt-2  text-primary-white text-xl">
                 {description}
               </p>
             </div>
@@ -99,7 +99,7 @@ const WorkDetail = () => {
                 GALLERY
               </p>
             </div>
-            <div className="relative overflow-hidden h-[700px]">
+            <div className="relative h-[300px] lg:h-[700px]">
               <AnimatePresence initial={false} custom={direction}>
                 {images.map((image, index) => (
                   <motion.img

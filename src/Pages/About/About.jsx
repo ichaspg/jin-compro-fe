@@ -28,11 +28,11 @@ const About = () => {
           {/* Main Introduction Section */}
           <div className="py-20 bg-primary-orange h-content rounded-2xl my-20 items-center flex flex-col">
             <div className="flex flex-col gap-2 justify-center items-center">
-              <p className="text-4xl text-primary-white font-bold tracking-wide leading-none text-center md:w-2/3">
+              <p className="text-3xl mx-3 lg:text-4xl text-primary-white font-bold tracking-wide leading-none text-center md:w-2/3">
                 Effortlessly Connecting Your World, Creating Seamless
                 Experiences Everywhere
               </p>
-              <p className="text-xl text-secondary-white font-light py-2 md:w-1/2 text-center">
+              <p className="text-lg lg:text-xl text-secondary-white font-light py-2 md:w-1/2 text-center">
                 At our core, we are dedicated to seamlessly connecting your
                 world by delivering cutting-edge technology solutions that
                 simplify and enhance your everyday experiences.
@@ -52,7 +52,7 @@ const About = () => {
           {/* Our Values Section */}
           <div className="self-start">
             <div className="flex flex-col md:flex-row">
-              <div className="mx-12">
+              <div className="lg:mx-12">
                 <p className="text-xl mb-4 ml-2 text-primary-white tracking-wide">
                   Our Values
                 </p>
@@ -74,29 +74,28 @@ const About = () => {
           </div>
 
           {/* Our Mission Section */}
-          <div className="self-end mt-20">
-            <div className="flex flex-col md:flex-row">
-              <div className="mt-4 md:mt-0 mx-12">
-                <img src={team} alt="Team" className="w-full md:w-[400px] rounded-xl lg:w-[716px]" />
-              </div>
-              <div className="text-center md:text-right">
+          <div className="mt-20 self-end">
+            <div className="flex flex-col md:flex-row-reverse">
+              <div className="lg:mx-12">
                 <p className="text-xl mb-4 ml-2 text-primary-white tracking-wide">
                   Our Mission
                 </p>
                 <p className="text-4xl md:text-6xl text-primary-white font-medium tracking-tighter">
-                  Seamless Integration, Lasting Impact.
+                  Seamless Integration, Meaningful Impact.
                 </p>
                 <p className="mt-4 text-primary-white font-light max-w-xl">
-                  Our mission is to deliver innovative integration solutions
-                  that empower businesses to operate efficiently, securely,
-                  and seamlessly. We are committed to fostering long-term
-                  success by connecting technology with business goals,
-                  ensuring smooth, scalable, and reliable operations for our
-                  clients.
+                  At Jaya Integrasi, we are driven by a mission to deliver seamless
+                  integration solutions that empower businesses to thrive. We focus on
+                  meaningful technological innovation to help our clients achieve
+                  exceptional results.
                 </p>
+              </div>
+              <div className="mt-4 md:mt-0">
+                <img src={team} alt="Team" className="w-full md:w-[400px] rounded-xl lg:w-[716px]" />
               </div>
             </div>
           </div>
+
         </div>
         <Mailer />
         <Footer />

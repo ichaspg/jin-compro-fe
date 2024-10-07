@@ -16,7 +16,7 @@ const UseCase = ({ useCases }) => {
           data-scroll-section
         >
           <div className="padding-y">
-            <p className="text-6xl font-bold tracking-wider text-primary-white w-[900px] text-center">
+            <p className="text-3xl leading-none lg:ke lg:text-6xl font-bold tracking-wider text-primary-white lg:w-[900px] text-center">
               BRINGING IDEAS TO LIFE: HOW{" "}
               <span className="text-primary-orange">TECHNOLOGY </span>SOLVES
               REAL PROBLEMS
