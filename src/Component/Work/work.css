@@ -27,7 +27,7 @@
 .work__grid {
   @apply grid gap-4 sm:gap-6 lg:gap-8
          grid-cols-1 sm:grid-cols-2 
-         auto-rows-auto w-full;
+         auto-rows-auto w-full h-full;
 }
 
 .work__grid-item {
@@ -50,7 +50,6 @@
   }
 }
 
-/* Medium screen adjustments */
 @media (min-width: 768px) and (max-width: 1023px) {
   .work__grid-item--large .workcard__img {
     @apply aspect-video w-full max-h-[600px] object-cover p-2 rounded-lg;

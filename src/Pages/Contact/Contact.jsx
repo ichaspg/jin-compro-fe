@@ -44,7 +44,7 @@ const Contact = () => {
                 imgSrc={chat} 
                 title="Chat to us" 
                 description="Our team is ready to help." 
-                contactInfo="code@jayaintegrasi.com" 
+                contactInfo="code@jayaintegrasi.id" 
               />
               <ContactInfo 
                 imgSrc={map} 

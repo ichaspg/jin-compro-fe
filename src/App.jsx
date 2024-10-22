@@ -148,6 +148,7 @@ function App() {
         const authToken = API_KEY;
 
         const config = {
+          pagination: { limit: 1000 },
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
@@ -166,6 +167,8 @@ function App() {
         setProducts(productResponse.data);
         setUseCase(usecasesResponse.data);
         setSteps(stepsResponse.data);
+  
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -178,6 +181,10 @@ function App() {
     };
     fetchData();
   }, []);
+
+
+  console.log(steps);
+
 
   const MainContent = () => (
     <>

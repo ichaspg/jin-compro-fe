@@ -57,6 +57,7 @@ const Category = ({ services, selectedSteps }) => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [contentWidth, setContentWidth] = useState(0);
 
+  
   const containerRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -76,8 +77,9 @@ const Category = ({ services, selectedSteps }) => {
     return services.data.filter(
       (service) =>
         service.attributes.category.data.attributes.title === categorySelected
-    );
+    );  
   }, [services, categorySelected]);
+
 
   useEffect(() => {
     const updateWidths = () => {
@@ -99,6 +101,9 @@ const Category = ({ services, selectedSteps }) => {
     const maxDrag = contentWidth - containerWidth;
     return { right: 0, left: -Math.max(0, maxDrag + 30) };
   }, [containerWidth, contentWidth]);
+
+  console.log(selectedSteps);
+  
 
   return (
     <div className="category-list">

@@ -8,8 +8,7 @@ export default function Step() {
   const containerRef = useRef(null);
   const location = useLocation();
   const { title, selectedSteps } = location.state || {
-    title: "",
-    selectedSteps: [],
+
   };
 
   const stepData = selectedSteps.data;

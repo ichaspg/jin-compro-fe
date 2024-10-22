@@ -34,9 +34,9 @@ const WorkCard = ({
       <div className="workcard__card">
         <div className="workcard__header" onClick={handleClick}>
           <div className="flex flex-col py-2 pb-0">
-            <p className="text-primary-white font font-semibold text-2xl">
-              {title}
-            </p>
+          <p className="text-primary-white font font-semibold text-2xl min-h-[60px] flex items-center">
+            {title}
+          </p>
             <p className="text-primary-white font-light">{categoryTitle}</p>
           </div>
           <motion.button

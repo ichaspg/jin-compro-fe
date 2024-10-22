@@ -4,12 +4,13 @@ import WorkCard from "./WorkCard/WorkCard";
 
 const Work = (works) => {
   const worksData = works?.works?.data;
-  const featuredWorksData = worksData?.filter(
-    (work) => work.attributes.Featured === true
-  );
+  
+  const featuredWorksData = worksData.filter((work) => {
+    return work?.attributes?.Featured === true;
+  });
 
-  if (!worksData) {
-    console.log("No works data available");
+  if (!featuredWorksData?.length) {
+    console.log("No featured works available");
     return null;
   }
 
@@ -17,25 +18,28 @@ const Work = (works) => {
     <section className="work__container" data-scroll-section>
       <div className="work__content max-container padding">
         <div className="work__header">
-          <img 
-            src={arrow} 
-            alt="Featured Works Arrow" 
+          <img
+            src={arrow}
+            alt="Featured Works Arrow"
             className="work__header-arrow"
           />
           <h2 className="work__header-title">
             OUR FEATURED WORKS
           </h2>
         </div>
-
         <div className="work__grid">
           {featuredWorksData.map((work, i) => {
+            const categoryTitle = work?.attributes?.category?.data?.attributes?.title;
+            const imageUrl = work?.attributes?.image?.data;
             const {
-              category: { data: { attributes: { title: categoryTitle } } },
-              image: { data: imageUrl },
               title,
               description,
               summary
-            } = work.attributes;
+            } = work?.attributes || {};
+            if (!categoryTitle || !imageUrl || !title) {
+              console.log(`Missing required data for work item ${i}`);
+              return null;
+            }
 
             return (
               <div
@@ -48,9 +52,8 @@ const Work = (works) => {
                   categoryTitle={categoryTitle}
                   imageUrl={imageUrl}
                   title={title}
-                  description={description}
-                  summary={summary}
-                  large={i % 3 === 2}
+                  description={description || ''}
+                  summary={summary || ''}
                 />
               </div>
             );
