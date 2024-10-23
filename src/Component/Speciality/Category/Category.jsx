@@ -101,10 +101,7 @@ const Category = ({ services, selectedSteps }) => {
     const maxDrag = contentWidth - containerWidth;
     return { right: 0, left: -Math.max(0, maxDrag + 30) };
   }, [containerWidth, contentWidth]);
-
-  console.log(selectedSteps);
   
-
   return (
     <div className="category-list">
       {categories.map((category, index) => (
