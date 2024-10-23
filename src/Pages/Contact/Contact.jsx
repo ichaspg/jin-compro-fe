@@ -8,9 +8,14 @@ import logo from "../../assets/logo_full_green.svg";
 import { motion } from "framer-motion";
 import arrow_right from "../../assets/arrow_right.svg";
 import Section from "../../Component/Anim/Section";
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import EMAILJS_CONFIG from "../../constant/mailer";
 
 const Contact = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,14 +31,73 @@ const Contact = () => {
     }));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+
+    const loadingToast = toast.loading("Sending your message...");
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        reply_to: formData.email,         
+        to_email: EMAILJS_CONFIG.RECIPIENT_EMAIL,
+        phone_number: formData.phoneNumber,
+        message: formData.message,
+        subject: `New Contact Form Message from ${formData.name}`,
+      };
+
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      if (response.status === 200) {
+        toast.update(loadingToast, {
+          render: "Message sent successfully!",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      
+      toast.update(loadingToast, {
+        render: "Failed to send message. Please try again later!",
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
   
   return (
     <>
       <Section>
+      <ToastContainer
+          position="bottom-right"
+          theme="dark"
+          pauseOnFocusLoss={false}
+        />
         <div className="max-container padding" data-scroll-section>
           <div className="bg-primary-white w-full rounded-xl border-black my-20 p-5 md:p-10 lg:p-14 flex flex-col lg:flex-row">
             <div className="flex flex-col gap-10 mb-10 lg:mb-0">
@@ -116,6 +180,7 @@ const Contact = () => {
                 </div>
                 <motion.button
                   type="submit"
+                  disabled={isLoading}
                   className={`submit-button mt-8 py-2 bg-primary-white rounded-full flex items-center overflow-hidden ${isHovered ? "justify-between" : "justify-center"}`}
                   initial={{ width: "56px" }}
                   whileHover={{ width: "168px" }}
@@ -162,7 +227,7 @@ const Contact = () => {
   );
 };
 
-// Separate component for contact info
+
 const ContactInfo = ({ imgSrc, title, description, contactInfo }) => (
   <div className="flex flex-row">
     <img src={imgSrc} alt={title} className="size-10 my-3 mr-3" />
@@ -174,7 +239,6 @@ const ContactInfo = ({ imgSrc, title, description, contactInfo }) => (
   </div>
 );
 
-// Separate component for form input
 const FormInput = ({ label, placeholder, type, name, value, onChange }) => (
   <div className="mt-8">
     <label htmlFor={name} className="my-4 block text-2xl font-medium text-primary-white">

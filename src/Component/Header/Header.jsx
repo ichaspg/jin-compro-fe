@@ -54,7 +54,7 @@ const backgroundVariants = {
 export default function Header({ scrollYRef }) {
   const [isActive, setIsActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Mobile view detection
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); 
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
@@ -70,7 +70,6 @@ export default function Header({ scrollYRef }) {
     setIsActive(false);
   };
 
-  // Detect screen resize to update mobile view
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -126,7 +125,7 @@ export default function Header({ scrollYRef }) {
       <div className="header__right" ref={menuRef}>
         <motion.div
           className="header__menu"
-          variants={menu(isMobile)} // Pass the isMobile state here
+          variants={menu(isMobile)}
           animate={isActive ? "open" : "closed"}
           initial="closed"
         >

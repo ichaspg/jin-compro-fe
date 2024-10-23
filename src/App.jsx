@@ -182,10 +182,6 @@ function App() {
     fetchData();
   }, []);
 
-
-  console.log(steps);
-
-
   const MainContent = () => (
     <>
       <Hero />

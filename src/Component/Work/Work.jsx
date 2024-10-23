@@ -37,7 +37,6 @@ const Work = (works) => {
               summary
             } = work?.attributes || {};
             if (!categoryTitle || !imageUrl || !title) {
-              console.log(`Missing required data for work item ${i}`);
               return null;
             }
 

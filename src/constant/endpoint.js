@@ -12,4 +12,6 @@ const ENDPOINT = {
   STEP: `${BASE_API}/api/steps?populate=*`,
 };
 
+
+
 export default ENDPOINT;

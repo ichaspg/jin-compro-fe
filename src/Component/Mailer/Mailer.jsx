@@ -3,9 +3,15 @@ import arrow_right from "../../assets/arrow_right.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import arrow from "../../assets/card_arrow.svg";
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import EMAILJS_CONFIG from "../../constant/mailer";
+
 
 const Mailer = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,13 +27,72 @@ const Mailer = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+
+    const loadingToast = toast.loading("Sending your message...");
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        reply_to: formData.email,         
+        to_email: EMAILJS_CONFIG.RECIPIENT_EMAIL, 
+        phone_number: formData.phoneNumber,
+        message: formData.message,
+        subject: `New Contact Form Message from ${formData.name}`,
+      };
+
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,        
+        EMAILJS_CONFIG.TEMPLATE_ID,       
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY         
+      );
+
+      if (response.status === 200) {
+        toast.update(loadingToast, {
+          render: "Message sent successfully!",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      
+      toast.update(loadingToast, {
+        render: "Failed to send message. Please try again later!",
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className="mailer__container" data-scroll-section>
+        <ToastContainer
+        position="bottom-right"
+        theme="dark"
+        pauseOnFocusLoss={false}
+      />
       <div className="max-container padding">
         <div className="mailer___header">
           <div className="flex flex-row justify-start items-center">
