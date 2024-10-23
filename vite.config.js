@@ -6,17 +6,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: "index.html",
-      external: ['@emailjs/browser', 'react-toastify']
     },
     commonjsOptions: {
-      include: [/node_modules/],
-    },
+      transformMixedEsModules: true,
+      include: [/node_modules/]
+    }
   },
-  resolve: {
-    alias: {
-      '@emailjs/browser': '/node_modules/@emailjs/browser/es/index.js',
-      'react-toastify': '/node_modules/react-toastify/dist/react-toastify.esm.js'
-    },
+  optimizeDeps: {
+    include: ['@emailjs/browser', 'react-toastify']
   },
   server: {
     historyApiFallback: true,
