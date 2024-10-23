@@ -10,6 +10,7 @@ import emailjs from '@emailjs/browser';
 import Section from "../../Component/Anim/Section";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import arrow_right from "../../assets/arrow_right.svg";
 import EMAILJS_CONFIG from "../../constant/mailer";
 
 const Contact = () => {
