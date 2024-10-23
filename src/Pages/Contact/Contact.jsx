@@ -6,8 +6,8 @@ import phone from "../../assets/phone.svg";
 import map from "../../assets/map.svg";
 import logo from "../../assets/logo_full_green.svg";
 import { motion } from "framer-motion";
-import emailjs from '@emailjs/browser';
 import Section from "../../Component/Anim/Section";
+import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import arrow_right from "../../assets/arrow_right.svg";
@@ -234,7 +234,7 @@ const ContactInfo = ({ imgSrc, title, description, contactInfo }) => (
     <div className="flex flex-col">
       <p className="font-medium text-lg">{title}</p>
       <p className="text-sm">{description}</p>
-      <p className="text-xl font-bold my-2">{contactInfo}</p>
+      <p className="text-xl font-bold my-2 mr-4">{contactInfo}</p>
     </div>
   </div>
 );
