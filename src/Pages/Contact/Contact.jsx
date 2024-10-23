@@ -6,9 +6,9 @@ import phone from "../../assets/phone.svg";
 import map from "../../assets/map.svg";
 import logo from "../../assets/logo_full_green.svg";
 import { motion } from "framer-motion";
-import arrow_right from "../../assets/arrow_right.svg";
-import Section from "../../Component/Anim/Section";
 import emailjs from '@emailjs/browser';
+import Section from "../../Component/Anim/Section";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EMAILJS_CONFIG from "../../constant/mailer";
