@@ -6,7 +6,6 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: "index.html",
-      external: ['@emailjs/browser'],
     },
   },
   server: {
