@@ -6,7 +6,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: "index.html",
-      external: ['@emailjs/browser'] 
+    },
+    commonjsOptions: {
+      include: [/node_modules/],
+    },
+  },
+  resolve: {
+    alias: {
+      '@emailjs/browser': '/node_modules/@emailjs/browser/es/index.js',
     },
   },
   server: {
