@@ -8,7 +8,6 @@ import logo from "../../assets/logo_full_green.svg";
 import { motion } from "framer-motion";
 import emailjs from '@emailjs/browser';
 import Section from "../../Component/Anim/Section";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EMAILJS_CONFIG from "../../constant/mailer";
