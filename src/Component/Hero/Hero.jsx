@@ -3,7 +3,6 @@ import "./hero.css";
 import HeroArrow from "../../assets/hero_arrow.svg";
 import { useNavigate } from "react-router-dom";
 
-
 const Hero = () => {
   const navigate = useNavigate();
 
@@ -15,11 +14,10 @@ const Hero = () => {
     <div className="hero__bg" data-scroll-section>
       <div className="flex flex-col justify-center items-center h-screen">
         <span className="font-bold text-4xl sm:text-32xl lg:text-6xl text-center text-white max-w-screen-lg">
-          Connecting Your World <br /> Seamlessly
+          Fusing Forward with <br /> Connected Technology
         </span>
         <span className="font-normal text-sm md:text-base lg:text-lg text-center text-white mt-5 max-w-screen-md">
-          At our core, we are committed to seamlessly connecting your world
-          through innovative technology solutions.
+          To provide a solution for seamless connection between Tech & Human
         </span>
         <div className="mt-2">
           <motion.button
