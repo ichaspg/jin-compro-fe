@@ -5,9 +5,9 @@ import DesignIcon from "../../../assets/dot_logo.svg";
 
 export const categories = [
   {
-    title: "Application Development",
+    title: "Hardware Design",
     href: "/",
-    icon: ApplicationIcon,
+    icon: HardwareIcon,
   },
   {
     title: "Software and System Development",
@@ -15,13 +15,14 @@ export const categories = [
     icon: SoftwareIcon,
   },
   {
-    title: "Hardware Design",
-    href: "/",
-    icon: HardwareIcon,
-  },
-  {
-    title: "Design and Multimedia",
+    title: "Technical Drawing and Engineering Design",
     href: "/",
     icon: DesignIcon,
   },
+  {
+    title: "Application Development",
+    href: "/",
+    icon: ApplicationIcon,
+  },
+
 ];

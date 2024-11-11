@@ -70,14 +70,29 @@ const Category = ({ services, selectedSteps }) => {
   };
 
   const filteredServices = useMemo(() => {
-    if (!services || !services.data || !Array.isArray(services.data)) {
+    if (!services?.data || !Array.isArray(services.data)) {
       console.error("services.data is not an array:", services);
       return [];
     }
-    return services.data.filter(
-      (service) =>
-        service.attributes.category.data.attributes.title === categorySelected
-    );  
+  
+    return services.data.filter((service) => {
+      try {
+        if (!service?.attributes?.category?.data?.attributes?.title) {
+          console.warn("Missing required properties in service:", service);
+          return false;
+        }
+  
+        if (!categorySelected) {
+          console.warn("No category selected");
+          return false;
+        }
+  
+        return service.attributes.category.data.attributes.title === categorySelected;
+      } catch (error) {
+        console.error("Error while filtering service:", error, service);
+        return false;
+      }
+    });
   }, [services, categorySelected]);
 
 
