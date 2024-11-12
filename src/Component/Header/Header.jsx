@@ -5,7 +5,6 @@ import "./header.css";
 import { motion, AnimatePresence } from "framer-motion";
 import Nav from "./Nav/Nav";
 import logo_complete from "../../assets/logo_complete.svg";
-import { links } from "./Nav/data"; // Import the links array
 
 const menu = (isMobile) => ({
   open: isMobile
@@ -124,19 +123,6 @@ export default function Header({ scrollYRef }) {
         <img src={logo_complete} alt="Logo" />
       </button>
       <div className="header__right" ref={menuRef}>
-        {/* Map through links to create menu items */}
-        <nav className="header__menu-list">
-          {links.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className="header__menu-item"
-              onClick={handleCloseMenu}
-            >
-              {link.title}
-            </a>
-          ))}
-        </nav>
         <motion.div
           className="header__menu"
           variants={menu(isMobile)}
