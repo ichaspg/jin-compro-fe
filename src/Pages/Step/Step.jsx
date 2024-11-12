@@ -7,15 +7,13 @@ import Footer from "../../Component/Footer/Footer";
 export default function Step() {
   const containerRef = useRef(null);
   const location = useLocation();
-  const { title, selectedSteps } = location.state || {
-
-  };
+  const { title, selectedSteps } = location.state || {};
 
   const stepData = selectedSteps.data;
 
-  const filteredSteps = stepData.filter(
-    (step) => step.attributes.service.data.attributes.title === title
-  );
+  const filteredSteps = stepData
+    .filter((step) => step.attributes.service.data.attributes.title === title)
+    .sort((a, b) => a.id - b.id); 
 
   const StepItem = ({ step, index }) => {
     const ref = useRef(null);
