@@ -5,9 +5,10 @@ import WorkCard from "./WorkCard/WorkCard";
 const Work = (works) => {
   const worksData = works?.works?.data;
   
-  const featuredWorksData = worksData.filter((work) => {
-    return work?.attributes?.Featured === true;
-  });
+  const featuredWorksData = Array.isArray(worksData)
+  ? worksData.filter((work) => work?.attributes?.Featured === true)
+  : [];
+
 
   if (!featuredWorksData?.length) {
     console.log("No featured works available");
