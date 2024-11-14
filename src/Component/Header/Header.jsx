@@ -1,19 +1,19 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import HeaderButton from "./Button/HeaderButton";
 import "./header.css";
 import { motion, AnimatePresence } from "framer-motion";
 import Nav from "./Nav/Nav";
 import logo_complete from "../../assets/logo_complete.svg";
-import { links } from "./Nav/data"; // Import the links array
+import { links } from "./Nav/data";
 
 const menu = (isMobile) => ({
   open: isMobile
     ? {
-        width: "105vw", 
-        height: "105vh", 
+        width: "105vw",
+        height: "105vh",
         top: "-70px",
-        right: "-70px", 
+        right: "-70px",
         transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1] },
       }
     : {
@@ -52,10 +52,45 @@ const backgroundVariants = {
   },
 };
 
+const navListVariants = {
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const navItemVariants = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+  hidden: {
+    opacity: 0,
+    x: -20,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
+    },
+  },
+};
+
 export default function Header({ scrollYRef }) {
   const [isActive, setIsActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
@@ -77,10 +112,7 @@ export default function Header({ scrollYRef }) {
     };
 
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -91,10 +123,7 @@ export default function Header({ scrollYRef }) {
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
   useEffect(() => {
@@ -103,46 +132,57 @@ export default function Header({ scrollYRef }) {
     };
 
     const intervalId = setInterval(checkScroll, 100);
-
     return () => clearInterval(intervalId);
   }, [scrollYRef]);
 
   return (
     <motion.div
-      className="header max-container"
+      className="header"
       initial="transparent"
       animate={isScrolled ? "solid" : "transparent"}
       variants={backgroundVariants}
       transition={{ duration: 0.3 }}
-      style={{
-        borderRadius: "12px",
-        borderWidth: "1px",
-        borderStyle: "solid",
-      }}
     >
       <button className="header__logo" onClick={handleLogoClick}>
         <img src={logo_complete} alt="Logo" />
       </button>
+
+      <AnimatePresence mode="wait">
+        {!isActive && (
+          <motion.nav
+            className="header__menu-list"
+            variants={navListVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            {links.map((link) => (
+              <motion.div key={link.title} variants={navItemVariants}>
+                <Link
+                  to={link.href}
+                  className="header__menu-item"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(link.href);
+                    handleCloseMenu();
+                  }}
+                >
+                  {link.title}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
+
       <div className="header__right" ref={menuRef}>
-        <nav className="header__menu-list">
-          {links.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className="header__menu-item"
-              onClick={handleCloseMenu}
-            >
-              {link.title}
-            </a>
-          ))}
-        </nav>
         <motion.div
           className="header__menu"
           variants={menu(isMobile)}
           animate={isActive ? "open" : "closed"}
           initial="closed"
         >
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             {isActive && <Nav onCloseMenu={handleCloseMenu} />}
           </AnimatePresence>
         </motion.div>
