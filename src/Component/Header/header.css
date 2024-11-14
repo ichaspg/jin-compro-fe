@@ -33,8 +33,7 @@
 .header__menu-list {
   @apply flex justify-center items-center;
   gap: 2rem;
-  margin-right: 2rem;
-  justify-items: center;
+  margin-right: 6rem;
 }
 
 .header__menu-item {
