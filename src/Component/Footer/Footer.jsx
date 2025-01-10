@@ -1,6 +1,6 @@
 import "./footer.css";
 import { images } from "./data";
-import logo from "../../assets/logo_full.png";
+import logo from "../../assets/logo_shadow.svg";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimationControls } from "framer-motion";
 import { useState } from "react";
@@ -34,10 +34,18 @@ const Footer = () => {
   };
 
   return (
-    <div className="footer__container" data-scroll-section>
+    <div
+      className="footer__container rounded-t-[200px]"
+      data-scroll-section
+      style={{
+        background: "linear-gradient(to top, #000000 20%, #2b2c2e 130%)",
+      }}
+    >
       <div className="max-container padding">
-        <div className="flex flex-col gap3 ">
-          <p className="text-sm lg:text-lg text-primary-white">ready to collaborate?</p>
+        <div className="flex flex-col gap3">
+          <p className="text-sm lg:text-lg text-primary-white">
+            ready to collaborate?
+          </p>
           <motion.div
             className="lg:text-8xl font-bold tracking-tighter cursor-pointer w-fit text-3xl"
             onClick={handleEmailClick}
@@ -57,16 +65,20 @@ const Footer = () => {
               </motion.span>
             ))}
           </motion.div>
-        </div>
-        <div className="image__container flex flex-row justify-between items-center self-end mt-60">
-          <div className="flex flex-row gap-5">
-            {images.map((image, index) => (
-              <div key={index}>
-                <img src={image.src} alt={image.alt} width="30" height="30" />
-              </div>
-            ))}
+          <div className="image__container flex flex-row justify-between items-center self-start mt-8">
+            <div className="flex flex-row gap-5">
+              {images.map((image, index) => (
+                <div key={index}>
+                  <img src={image.src} alt={image.alt} width="30" height="30" />
+                </div>
+              ))}
+            </div>
           </div>
-          <img src={logo} alt="" />
+          <hr className="mt-12 bg-[#68696A] h-[2px] border-none" />
+          <img
+            src={logo}
+            className="w-[274px] h-[274px] mt-40 self-center justify-end"
+          />
         </div>
       </div>
     </div>

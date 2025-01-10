@@ -7,7 +7,7 @@ const Partner = () => {
   const duplicatedImages = [...images, ...images, ...images, ...images];
 
   return (
-    <div data-scroll-section>
+    <div className="max-container" data-scroll-section>
       <p className="text-2xl text-center font-light text-primary-white py-4">
         CLIENT & PARTNERS WE'VE MET ON OUR JOURNEY
       </p>

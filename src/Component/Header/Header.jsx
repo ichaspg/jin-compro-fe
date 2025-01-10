@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import HeaderButton from "./Button/HeaderButton";
-import "./header.css";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import HeaderButton from "./Button/HeaderButton";
 import Nav from "./Nav/Nav";
 import logo_complete from "../../assets/logo_complete.svg";
+import "./header.css";
 import { links } from "./Nav/data";
-
+import wa from "../../assets/whatsapp.svg";
 const menu = (isMobile) => ({
   open: isMobile
     ? {
@@ -87,11 +87,41 @@ const navItemVariants = {
   },
 };
 
+const MenuItem = ({ href, title, isActive, onClick }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="menu-item-container"
+      variants={navItemVariants}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <Link
+        to={href}
+        className={`header__menu-item ${isActive ? "active" : ""}`}
+        onClick={onClick}
+      >
+        {title}
+        <motion.div
+          className="hover-background"
+          initial={{ height: 0 }}
+          animate={{
+            height: isHovered || isActive ? "100%" : 0,
+            transition: { duration: 0.35, ease: "easeOut" },
+          }}
+        />
+      </Link>
+    </motion.div>
+  );
+};
+
 export default function Header({ scrollYRef }) {
   const [isActive, setIsActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
+  const location = useLocation();
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
@@ -104,6 +134,10 @@ export default function Header({ scrollYRef }) {
 
   const handleCloseMenu = () => {
     setIsActive(false);
+  };
+
+  const handleContactClick = () => {
+    navigate("/contact");
   };
 
   useEffect(() => {
@@ -139,7 +173,7 @@ export default function Header({ scrollYRef }) {
     <motion.div
       className="header"
       initial="transparent"
-      animate={isScrolled ? "solid" : "transparent"}
+      animate={isScrolled ? "transparent" : "transparent"}
       variants={backgroundVariants}
       transition={{ duration: 0.3 }}
     >
@@ -148,7 +182,7 @@ export default function Header({ scrollYRef }) {
       </button>
 
       <AnimatePresence mode="wait">
-        {!isActive && (
+        {!isActive && !isMobile && (
           <motion.nav
             className="header__menu-list"
             variants={navListVariants}
@@ -157,36 +191,52 @@ export default function Header({ scrollYRef }) {
             exit="hidden"
           >
             {links.map((link) => (
-              <motion.div key={link.title} variants={navItemVariants}>
-                <Link
-                  to={link.href}
-                  className="header__menu-item"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigate(link.href);
-                    handleCloseMenu();
-                  }}
-                >
-                  {link.title}
-                </Link>
-              </motion.div>
+              <MenuItem
+                key={link.title}
+                href={link.href}
+                title={link.title}
+                isActive={location.pathname === link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(link.href);
+                  handleCloseMenu();
+                }}
+              />
             ))}
           </motion.nav>
         )}
       </AnimatePresence>
 
       <div className="header__right" ref={menuRef}>
-        <motion.div
-          className="header__menu"
-          variants={menu(isMobile)}
-          animate={isActive ? "open" : "closed"}
-          initial="closed"
-        >
-          <AnimatePresence mode="wait">
-            {isActive && <Nav onCloseMenu={handleCloseMenu} />}
-          </AnimatePresence>
-        </motion.div>
-        <HeaderButton isActive={isActive} toggleMenu={toggleMenu} />
+        {isMobile ? (
+          <>
+            <motion.div
+              className="header__menu"
+              variants={menu(isMobile)}
+              animate={isActive ? "open" : "closed"}
+              initial="closed"
+            >
+              <AnimatePresence mode="wait">
+                {isActive && <Nav onCloseMenu={handleCloseMenu} />}
+              </AnimatePresence>
+            </motion.div>
+            <HeaderButton isActive={isActive} toggleMenu={toggleMenu} />
+          </>
+        ) : (
+          <motion.button
+            className="contact-button"
+            onClick={handleContactClick}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="flex flex-row bg-primary-orange p-3 rounded-full">
+              <p className="font-medium mx-2 text-lg text-primary-white">
+                Contact Us!
+              </p>
+              <img src={wa} alt="" />
+            </div>
+          </motion.button>
+        )}
       </div>
     </motion.div>
   );

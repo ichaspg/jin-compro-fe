@@ -3,11 +3,11 @@ import arrow_right from "../../assets/arrow_right.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import arrow from "../../assets/card_arrow.svg";
-import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import EMAILJS_CONFIG from "../../constant/mailer";
-
+import MailerBG from "../../assets/mailerbg.png";
 
 const Mailer = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -37,18 +37,18 @@ const Mailer = () => {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        reply_to: formData.email,         
-        to_email: EMAILJS_CONFIG.RECIPIENT_EMAIL, 
+        reply_to: formData.email,
+        to_email: EMAILJS_CONFIG.RECIPIENT_EMAIL,
         phone_number: formData.phoneNumber,
         message: formData.message,
         subject: `New Contact Form Message from ${formData.name}`,
       };
 
       const response = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,        
-        EMAILJS_CONFIG.TEMPLATE_ID,       
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY         
+        EMAILJS_CONFIG.PUBLIC_KEY
       );
 
       if (response.status === 200) {
@@ -70,8 +70,8 @@ const Mailer = () => {
         });
       }
     } catch (error) {
-      console.error('Error sending email:', error);
-      
+      console.error("Error sending email:", error);
+
       toast.update(loadingToast, {
         render: "Failed to send message. Please try again later!",
         type: "error",
@@ -87,8 +87,19 @@ const Mailer = () => {
   };
 
   return (
-    <div className="mailer__container" data-scroll-section>
-        <ToastContainer
+    <div
+      className="mailer__container mt-5"
+      data-scroll-section
+      style={{
+        backgroundImage: `url(${MailerBG})`,
+        backgroundSize: "3000px 100vh",
+        backgroundPosition: "-1300px center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+        width: "100vw",
+      }}
+    >
+      <ToastContainer
         position="bottom-right"
         theme="dark"
         pauseOnFocusLoss={false}

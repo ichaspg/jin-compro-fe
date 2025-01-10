@@ -31,22 +31,40 @@
 }
 
 .header__menu-list {
-  @apply flex justify-center items-center;
-  gap: 2rem;
-  margin-right: 6rem;
+  @apply flex justify-center items-center bg-[rgba(1,90,106,0.8)] border-2 border-white rounded-xl;
+  gap: 2.5rem;
+}
+
+.menu-item-container {
+  position: relative;
+  padding: 0.3rem 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .header__menu-item {
-  @apply text-secondary-white mt-5;
-
+  @apply text-secondary-white px-2 py-2;
+  position: relative;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.125rem;
+
   transition: opacity 0.3s ease;
-  font-size: large;
+  z-index: 1;
+  display: block;
 }
 
-.header__menu-item:hover {
-  opacity: 0.7;
+.hover-background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f05e22;
+  z-index: -1;
+  border-radius: 8px;
+}
+
+.header__menu-item.active .hover-background {
+  height: 100%;
 }
 
 .header__menu {

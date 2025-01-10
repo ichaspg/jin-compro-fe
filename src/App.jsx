@@ -167,8 +167,6 @@ function App() {
         setProducts(productResponse.data);
         setUseCase(usecasesResponse.data);
         setSteps(stepsResponse.data);
-  
-        
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -199,7 +197,7 @@ function App() {
         {isLoading ? <Preloader /> : null}
       </AnimatePresence>
       <Header isLoading={isLoading} scrollYRef={scrollYRef} />
-      {!isLoading && <FloatingButton locomotiveInstance={locomotiveInstance} />}
+
       <AnimatePresence mode="wait">
         {!isLoading && (
           <ScrollContainer
