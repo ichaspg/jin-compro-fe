@@ -1,6 +1,6 @@
 /* work.css */
 .work__container {
-  @apply relative w-full bg-[#015a6a] overflow-hidden;
+  @apply relative w-full bg-primart-black overflow-hidden;
   margin-top: -1px;
   background-image: linear-gradient(to right, #80808012 1px, transparent 1px),
     linear-gradient(to bottom, #80808012 1px, transparent 1px);

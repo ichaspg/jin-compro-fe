@@ -2,7 +2,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./categorycard.css";
-import logo from "../../../../assets/logo_green.svg";
+import logo from "../../../../assets/logo.svg";
+import arrow from "../../../../assets/arrow_90.svg";
 import card_arrow from "../../../../assets/card_arrow.svg";
 
 const CategoryCard = ({ service, selectedSteps }) => {
@@ -46,12 +47,12 @@ const CategoryCard = ({ service, selectedSteps }) => {
         <div className="card-footer">
           <button
             onClick={handleClick}
-            className="w-full flex items-center justify-end px-4 gap-2 hover:bg-primary-orange/90 transition-colors"
+            className="flex items-center justify-start gap-2 px-4 hover:bg-primary-orange/90 transition-colors"
           >
+            <img src={arrow} alt="arrow" className="w-6 rotate-on-hover" />
             <span className="text-secondary-white text-sm font-light tracking-wider">
               LEARN MORE
             </span>
-            <img src={card_arrow} alt="arrow" className="w-6 rotate-on-hover" />
           </button>
         </div>
       </div>

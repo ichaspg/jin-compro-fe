@@ -1,6 +1,7 @@
 import "./work.css";
 import arrow from "../../assets/arrow_90.svg";
 import WorkCard from "./WorkCard/WorkCard";
+import WorkCardFeatured from "../WorkCardFeatured/WorkCardFeatured";
 
 const Work = (works) => {
   const worksData = works?.works?.data;
@@ -25,10 +26,10 @@ const Work = (works) => {
             className="work__header-arrow"
           />
           <h2 className="work__header-title">
-            OUR FEATURED WORKS
+            FEATURED WORKS
           </h2>
         </div>
-        <div className="work__grid">
+        <div className="flex flex-row gap-10">
           {featuredWorksData.map((work, i) => {
             const categoryTitle = work?.attributes?.category?.data?.attributes?.title;
             const imageUrl = work?.attributes?.image?.data;
@@ -44,11 +45,9 @@ const Work = (works) => {
             return (
               <div
                 key={`work_${i}`}
-                className={`work__grid-item ${
-                  i % 3 === 2 ? 'work__grid-item' : ''
-                }`}
+          
               >
-                <WorkCard
+                <WorkCardFeatured
                   categoryTitle={categoryTitle}
                   imageUrl={imageUrl}
                   title={title}

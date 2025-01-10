@@ -4,7 +4,7 @@
 }
 
 .service-card {
-  @apply flex flex-col gap-3 bg-secondary-white rounded-lg
+  @apply flex flex-col gap-3 bg-transparent border-2 border-white rounded-lg
          w-[230px] sm:w-[350px] md:w-[280px]
          min-h-[400px] sm:min-h-[400px]
          transition-all duration-300 cursor-pointer mt-2;
@@ -27,15 +27,15 @@
 }
 
 .content-title {
-  @apply text-base sm:text-lg font-medium;
+  @apply text-base sm:text-lg font-medium text-primary-white;
 }
 
 .content-desc {
-  @apply text-xs sm:text-sm text-gray-600;
+  @apply text-xs sm:text-sm text-primary-white font-light;
 }
 
 .card-footer {
-  @apply flex bg-primary-orange mt-auto;
+  @apply flex bg-[rgba(217,217,217,0.2)] mt-auto justify-start;
   height: 60px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;

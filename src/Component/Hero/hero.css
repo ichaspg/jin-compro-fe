@@ -1,12 +1,10 @@
 .hero__bg {
-  background: rgb(1, 90, 106);
-  background: linear-gradient(
-    0deg,
-    rgba(1, 90, 106, 1) 0%,
-    rgba(217, 104, 60, 0.9248074229691877) 100%
-  );
-  margin-bottom: -1px;
+  background-image: 
+  radial-gradient(circle at 50% 50% , rgba(220,220,220,0.15) 0%, rgba(0,0,0,0) 30%),
+    linear-gradient(to bottom, #015a6a, #174758, #1e3544, #1c242e, #141519);
 }
+
+
 
 .hero__button {
   display: flex;
