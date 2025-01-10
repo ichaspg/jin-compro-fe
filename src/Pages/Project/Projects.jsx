@@ -3,10 +3,15 @@ import { motion, AnimatePresence } from "framer-motion"; // Import from Framer M
 import logo from "../../assets/logo.svg";
 import Transition from "../../Transition";
 import "./project.css";
+import arrow from "../../assets/arrow_90.svg";
 import ProjectCard from "./ProjectCard/ProjectCard";
 import Mailer from "../../Component/Mailer/Mailer";
 import Footer from "../../Component/Footer/Footer";
 import Section from "../../Component/Anim/Section";
+import ProjectCardNew from "./ProjectCard/ProjectCardNew";
+import PartnerStill from "../../Component/PartnerStill/PartnerStill";
+import placeholder from "../../assets/placeholder_contact.png";
+import arrowdiag from "../../assets/arrow_diag.svg";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -17,11 +22,11 @@ const cardVariants = {
 const Projects = ({ works, categories }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Check if categories and works exist before accessing data
   const categoriesItem = categories?.data || [];
   const worksItem = works?.data || [];
-
-  // Filter works based on selected category
+  const featuredWorksData = Array.isArray(worksItem)
+    ? worksItem.filter((work) => work?.attributes?.Featured === true)
+    : [];
   const filteredWorks =
     selectedCategory === "All"
       ? worksItem
@@ -58,6 +63,20 @@ const Projects = ({ works, categories }) => {
                 in the past, highlighting our expertise and accomplishments.
               </p>
             </div>
+            <div className="work__header">
+              <img
+                src={arrow}
+                alt="Featured Works Arrow"
+                className="work__header-arrow"
+              />
+              <div className="flex flex-col gap-2 ">
+                <h2 className="work__header-title">Our Completed Projects</h2>
+              </div>
+            </div>
+            <p className="text-lg text-primary-white font-light mt-[-20px]">
+              Here is a showcase of the projects we've successfully completed in
+              the past, highlighting our expertise and accomplishments.
+            </p>
             <div className="project__work_container">
               <div className="project__category_container flex flex-wrap justify-center gap-2 my-4">
                 <div className="project__category_item">
@@ -101,7 +120,7 @@ const Projects = ({ works, categories }) => {
                         animate="visible"
                         exit="exit"
                       >
-                        <ProjectCard
+                        <ProjectCardNew
                           category={
                             work?.attributes?.category?.data?.attributes?.title
                           }
@@ -113,14 +132,39 @@ const Projects = ({ works, categories }) => {
                       </motion.div>
                     ))
                   ) : (
-                    <p className="text-center col-span-full">No projects available</p>
+                    <p className="text-center col-span-full">
+                      No projects available
+                    </p>
                   )}
                 </AnimatePresence>
               </div>
             </div>
           </div>
+          <PartnerStill />
+          <div
+            style={{
+              width: "100%",
+              height: "300px",
+              backgroundImage: `url(${placeholder})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            className="self-center ml-3 mt-20 flex flex-col justify-center items-center"
+          >
+            <div className="flex flex-col items-center">
+              <p className="text-4xl font-normal text-center text-primary-white">
+                Start Connect with us
+              </p>
+              <button className="self-center mt-4">
+                <div className="bg-primary-white text-primary-green text-base font-medium rounded-3xl py-3 px-4 flex flex-row ">
+                  <p>CONTACT US</p>
+                  <img src={arrowdiag} alt="" className="mx-3" />
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
-        <Mailer />
         <Footer />
       </Section>
     </>

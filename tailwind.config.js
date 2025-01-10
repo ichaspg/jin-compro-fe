@@ -19,7 +19,7 @@ module.exports = {
       },
       colors: {
         "primary-orange": "#D9683C",
-        "primart-black": "#101114",
+        "primart-black": "#141519",
         "primary-green": "#015A6A",
         "primary-white": "#E8ECEE",
         "secondary-white": "#F2EFE6",
