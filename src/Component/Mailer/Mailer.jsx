@@ -106,7 +106,7 @@ const Mailer = () => {
             transform: "translateY(-50%) scale(0.8)",
             width: "120vh",
             height: "120vh",
-            background: "linear-gradient(to right, #141519 30%, #303134 100%)",
+            background: "linear-gradient(to right, #111316 30%, #303134 100%)",
             borderRadius: "200px",
             zIndex: -1,
           }}
@@ -120,7 +120,7 @@ const Mailer = () => {
             transform: "translateY(-50%) scale(0.8)",
             width: "120vh",
             height: "120vh",
-            background: "linear-gradient(to left, #141519 30%, #303134 100%)",
+            background: "linear-gradient(to left, #111316 30%, #303134 100%)",
             borderRadius: "200px",
             zIndex: -1,
           }}

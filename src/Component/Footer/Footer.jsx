@@ -38,7 +38,7 @@ const Footer = () => {
       className="footer__container rounded-t-[200px] mt-[-20px] bg-primart-black"
       data-scroll-section
       style={{
-        background: "linear-gradient(to top, #141519 30%, #303134 100%)",
+        background: "linear-gradient(to top, #111316 30%, #303134 100%)",
       }}
     >
       <div className="padding bg-pri">

@@ -10,15 +10,14 @@
   z-index: 4000;
   background-color: #111316;
   transition: background-color 0.7s ease;
-  overflow: hidden;
 }
 
 .preloader__introduction.gradient {
   background: linear-gradient(
     0deg,
-    rgba(17, 19, 22, 1) 0%,
+    rgba(1, 90, 106, 1) 0%,
     rgba(217, 104, 60, 0.9248074229691877) 100%
-  );
+  ); /* Gradient background */
 }
 
 .preloader__introduction svg {
