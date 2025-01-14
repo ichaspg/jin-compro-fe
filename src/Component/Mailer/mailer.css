@@ -11,14 +11,14 @@
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
-  background: linear-gradient(to right, #141519 30%, #303134 100%);
+  background: linear-gradient(to right, #111316 30%, #303134 100%);
 }
 
 .background-square:nth-child(2) {
   top: 50%;
   right: -15%;
   transform: translateY(-50%);
-  background: linear-gradient(to left, #000000 30%, #303134 100%);
+  background: linear-gradient(to left, #111316 30%, #303134 100%);
 }
 
 @media (max-width: 768px) {
