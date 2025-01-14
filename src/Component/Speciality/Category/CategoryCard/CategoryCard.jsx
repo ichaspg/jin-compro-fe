@@ -44,12 +44,12 @@ const CategoryCard = ({ service, selectedSteps }) => {
           <h3 className="content-title">{service.attributes.title}</h3>
           <p className="content-desc">{service.attributes.description}</p>
         </div>
-        <div className="card-footer">
+        <div className="card-footer hover:bg-primary-orange transition-colors">
           <button
             onClick={handleClick}
-            className="flex items-center justify-start gap-2 px-4 hover:bg-primary-orange/90 transition-colors"
+            className="flex items-center justify-start gap-2 px-4 "
           >
-            <img src={arrow} alt="arrow" className="w-6 rotate-on-hover" />
+            <img src={arrow} alt="arrow" className="w-6 " />
             <span className="text-secondary-white text-sm font-light tracking-wider">
               LEARN MORE
             </span>

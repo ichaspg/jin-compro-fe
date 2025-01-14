@@ -42,11 +42,11 @@ const PartnerStill = () => {
           and create success across industries.
         </p>
       </div>
-      <div className="grid grid-cols-3 grid-rows-2 mt-10 gap-4">
+      <div className="grid grid-cols-3 grid-rows-2 mt-10 gap-5 items-center mr-10">
         {getCurrentImages().map((image, index) => (
           <div
             key={`${currentPage}-${index}`}
-            className="mx-4 border-2 border-[#B7B7B7] rounded-lg flex justify-center items-center p-6 min-h-[420px] max-h-[420px] min-w-[420px] max-w-[420px]"
+            className="mx-4 border-2 border-[#B7B7B7] rounded-lg flex justify-center items-center p-6 min-h-[600px] max-h-[600px] min-w-[600px] max-w-[600px]"
           >
             <AnimatePresence mode="wait">
               <motion.img

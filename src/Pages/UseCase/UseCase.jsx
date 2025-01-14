@@ -12,7 +12,7 @@ const UseCase = ({ useCases }) => {
     <>
       <Section>
         <div
-          className="max-container w-full flex flex-col justify-center items-center padding min-h-screen"
+          className=" w-full flex flex-col justify-center items-center padding min-h-screen"
           data-scroll-section
         >
           <div className="padding-y">

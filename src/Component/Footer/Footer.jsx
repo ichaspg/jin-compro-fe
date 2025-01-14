@@ -35,14 +35,14 @@ const Footer = () => {
 
   return (
     <div
-      className="footer__container rounded-t-[200px]"
+      className="footer__container rounded-t-[200px] mt-[-20px] bg-primart-black"
       data-scroll-section
       style={{
-        background: "linear-gradient(to top, #000000 20%, #2b2c2e 130%)",
+        background: "linear-gradient(to top, #141519 30%, #303134 100%)",
       }}
     >
-      <div className="max-container padding">
-        <div className="flex flex-col gap3">
+      <div className="padding bg-pri">
+        <div className="flex flex-col gap3 px-20">
           <p className="text-sm lg:text-lg text-primary-white">
             ready to collaborate?
           </p>

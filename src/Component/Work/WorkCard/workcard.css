@@ -12,7 +12,6 @@
   object-fit: cover;
 }
 
-
 .workcard__header {
   @apply flex justify-between items-center p-3;
 }

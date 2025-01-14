@@ -35,7 +35,7 @@ const WorkCardFeatured = ({
         whileHover="hovered"
         initial="initial"
         variants={{
-          hovered: { scale: 1.03 },
+          hovered: { scale: 1.01 },
           initial: { scale: 1 },
         }}
         transition={{ type: "spring", stiffness: 200, damping: 25 }}

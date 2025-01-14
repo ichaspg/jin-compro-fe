@@ -33,10 +33,7 @@ const Work = ({ works }) => {
   }
 
   return (
-    <section
-      className="work__container max-container padding"
-      data-scroll-section
-    >
+    <section className="work__container" data-scroll-section>
       <div className="work__content">
         <div className="work__header">
           <img
@@ -77,8 +74,8 @@ const Work = ({ works }) => {
                   key={`work_${i}`}
                   className="flex-shrink-0"
                   style={{
-                    width: "350px",
-                    minWidth: "350px",
+                    width: "250px",
+                    minWidth: "300px",
                   }}
                 >
                   <WorkCardFeatured

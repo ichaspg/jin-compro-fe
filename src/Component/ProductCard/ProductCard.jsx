@@ -14,7 +14,7 @@ const ProductCard = ({ title, img, desc, summary, useCase }) => {
   };
   return (
     <motion.div
-      className="relative lg:w-[600px] h-[480px] rounded-lg overflow-hidden cursor-pointer"
+      className="relative lg:w-[580px] h-[480px] rounded-lg overflow-hidden cursor-pointer"
       whileHover="hovered"
       initial="initial"
       variants={{

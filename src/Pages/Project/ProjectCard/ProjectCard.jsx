@@ -32,11 +32,18 @@ const ProjectCard = ({ category, images, title, summary, description }) => {
         <div className="flex flex-row justify-between mt-3 pt-5">
           <p className="lg:text-2xl text-primary-green font-medium">{title}</p>
           <button onClick={handleNavigate}>
-            <motion.img src={arrow} alt="arrow" className="min-h-5 min-w-5 max-w-5 max-h-5"whileHover={{ rotate: 45 }}
-            transition={{ duration: 0.5 }} />
+            <motion.img
+              src={arrow}
+              alt="arrow"
+              className="min-h-5 min-w-5 max-w-5 max-h-5"
+              whileHover={{ rotate: 45 }}
+              transition={{ duration: 0.5 }}
+            />
           </button>
         </div>
-        <p className="lg:w-[450px] lg:text-xl text-primary-green text-sm">{summary}</p>
+        <p className="lg:w-[450px] lg:text-xl text-primary-green text-sm">
+          {summary}
+        </p>
       </div>
     </div>
   );

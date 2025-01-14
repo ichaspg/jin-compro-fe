@@ -1,11 +1,11 @@
 /* work.css */
 .work__container {
-  @apply relative w-full bg-primart-black;
+  @apply relative  bg-primart-black px-10;
   margin-top: -1px;
 }
 
 .work__content {
-  @apply container mx-auto px-4 sm:px-6 lg:px-8 py-12;
+  @apply mx-auto px-4 sm:px-6 lg:px-8 py-12;
   width: 100%;
   overflow: hidden;
 }

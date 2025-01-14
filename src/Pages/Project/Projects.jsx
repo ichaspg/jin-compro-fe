@@ -45,7 +45,7 @@ const swipePower = (offset, velocity) => {
 
 const Projects = ({ works, categories }) => {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All Works");
   const [[page, direction], setPage] = useState([0, 0]);
 
   const categoriesItem = categories?.data || [];
@@ -54,7 +54,7 @@ const Projects = ({ works, categories }) => {
     ? worksItem.filter((work) => work?.attributes?.Featured === true)
     : [];
   const filteredWorks =
-    selectedCategory === "All"
+    selectedCategory === "All Works"
       ? worksItem
       : worksItem.filter(
           (work) =>
@@ -76,7 +76,7 @@ const Projects = ({ works, categories }) => {
         title: work?.attributes?.title,
         summary: work?.attributes?.summary,
         description: work?.attributes?.description,
-        thumbnail: work?.attributes.thumbnail?.data?.attributes?.url,
+        thumbnail: work?.attributes?.thumbnail,
       },
     });
   };
@@ -89,9 +89,12 @@ const Projects = ({ works, categories }) => {
 
   return (
     <Section>
-      <div data-scroll-section>
+      <div
+        data-scroll-section
+        className="flex flex-col justify-center items-center"
+      >
         {/* Featured Works Slider Section */}
-        <div className="relative h-[80vh] mb-10">
+        <div className="absoulte h-[80vh] mb-10">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={page}
@@ -115,7 +118,7 @@ const Projects = ({ works, categories }) => {
                   paginate(-1);
                 }
               }}
-              className="absolute inset-0"
+              className="absolute inset-0 -z-20"
             >
               <div className="w-screen h-screen">
                 {(() => {
@@ -177,7 +180,7 @@ const Projects = ({ works, categories }) => {
 
           {/* Stripe Pagination */}
           {/* <div className="absolute top-[105%] right-[34%] w-full flex justify-center gap-3 z-10"> */}
-          <div className="absolute top-[115%] right-[38%] w-full flex justify-center gap-3 z-10">
+          <div className="relative top-[115%] flex justify-start gap-3 z-10 xl:right-[280%] lg:right-[0%]">
             {featuredWorksData.map((_, index) => (
               <motion.button
                 key={index}
@@ -198,7 +201,7 @@ const Projects = ({ works, categories }) => {
         </div>
 
         {/* Main Content Section */}
-        <div className="max-container padding">
+        <div className="padding z-20">
           <div className="work__header mt-20">
             <img
               src={arrow}
@@ -216,15 +219,15 @@ const Projects = ({ works, categories }) => {
           </p>
 
           <div className="project__work_container">
-            <div className="project__category_container flex flex-wrap justify-center gap-2 my-4">
+            <div className="project__category_container flex flex-wrap justify-center gap-5 my-4">
               <div className="project__category_item">
                 <button
                   className={`project__category_button ${
-                    selectedCategory === "All" ? "active" : ""
+                    selectedCategory === "All Works" ? "active" : ""
                   }`}
-                  onClick={() => setSelectedCategory("All")}
+                  onClick={() => setSelectedCategory("All Works")}
                 >
-                  All
+                  All Works
                 </button>
               </div>
               {categoriesItem.length > 0 &&
@@ -279,31 +282,30 @@ const Projects = ({ works, categories }) => {
             </div>
           </div>
         </div>
-        <div className="max-container padding">
+        <div className="px-10">
           <PartnerStill />
-
-          <div
-            style={{
-              width: "100%",
-              height: "300px",
-              backgroundImage: `url(${placeholder})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-            className="self-center mt-20 flex flex-col justify-center items-center ml-3"
-          >
-            <div className="flex flex-col items-center">
-              <p className="text-4xl font-normal text-center text-primary-white">
-                Start Connect with us
-              </p>
-              <button className="self-center mt-4">
-                <div className="bg-primary-white text-primary-green text-base font-medium rounded-3xl py-3 px-4 flex flex-row">
-                  <p>CONTACT US</p>
-                  <img src={arrowdiag} alt="" className="mx-3" />
-                </div>
-              </button>
-            </div>
+        </div>
+        <div
+          style={{
+            width: "100vw",
+            height: "300px",
+            backgroundImage: `url(${placeholder})`,
+            backgroundSize: "95%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+          className="self-center mt-20 flex flex-col justify-center items-center mb-10 ml-1"
+        >
+          <div className="flex flex-col items-center">
+            <p className="text-4xl font-normal text-center text-primary-white">
+              Start Connect with us
+            </p>
+            <button className="self-center mt-4">
+              <div className="bg-primary-white text-primary-green text-base font-medium rounded-3xl py-3 px-4 flex flex-row">
+                <p>CONTACT US</p>
+                <img src={arrowdiag} alt="" className="mx-3" />
+              </div>
+            </button>
           </div>
         </div>
       </div>

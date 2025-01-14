@@ -12,7 +12,8 @@ import Section from "../../Component/Anim/Section";
 
 const WorkDetail = () => {
   const location = useLocation();
-  const { category, images, title, summary, description } = location.state;
+  const { category, images, title, summary, description, thumbnail } =
+    location.state;
   const [[currentImageIndex, direction], setImage] = useState([0, 0]);
 
   useEffect(() => {
@@ -51,47 +52,53 @@ const WorkDetail = () => {
       opacity: 0,
     }),
   };
+  console.log(thumbnail);
 
   return (
     <>
       <Section>
-        <div data-scroll-section className="max-container padding w-full">
-          <div className="flex flex-col my-20">
-            <div className="flex flex-col">
-              <p className="text-4xl font-medium text-primary-white">{title}</p>
-              <p className="text-2xl font-light text-primary-white tracking-wider mb-5 mt-2">
-                {category}
-              </p>
-              <img
-                src={`${BASE_API}${images[0]?.attributes.url}`}
-                alt=""
-                className=" rounded-lg"
-              />
-            </div>
-            <div className="flex flex-col py-10">
-              <div className="flex gap-5">
-                <img src={arrow} alt="" />
-                <p className="text-4xl text-primary-white font-light ">
-                  WHAT WE DO
+        <div data-scroll-section className="">
+          <div className="flex flex-col">
+            <div
+              className="flex flex-col bg-cover bg-center rounded-lg w-screen h-screen"
+              style={{
+                backgroundImage: `url(${BASE_API}${thumbnail.data?.attributes.url})`,
+              }}
+            ></div>
+            <div className="p-10">
+              <div className=" bg-opacity-50  rounded-lg">
+                <p className="text-4xl font-medium text-primary-white">
+                  {title}
+                </p>
+                <p className="text-2xl font-light text-primary-white tracking-wider mb-5 mt-2">
+                  {category}
                 </p>
               </div>
-              <p className="text-primary-white text-xl">{summary}</p>
-            </div>
+              <div className="flex flex-col py-10">
+                <div className="flex gap-5">
+                  <img src={arrow} alt="" />
+                  <p className="text-4xl text-primary-white font-light ">
+                    WHAT WE DO
+                  </p>
+                </div>
+                <p className="text-primary-white text-xl">{summary}</p>
+              </div>
 
-            <div className="flex flex-col items-end">
-              <div className="flex flex-row gap-5 items-center">
-                <p className="text-4xl text-primary-white font-light ">
-                  WHAT OUR OBJECTIVE
+              <div className="flex flex-col items-end">
+                <div className="flex flex-row gap-5 items-center">
+                  <p className="text-4xl text-primary-white font-light ">
+                    WHAT OUR OBJECTIVE
+                  </p>
+                  <img src={arrow} alt="" className="rotate-180" />
+                </div>
+                <p className="text-right mt-2  text-primary-white text-xl">
+                  {description}
                 </p>
-                <img src={arrow} alt="" className="rotate-180" />
               </div>
-              <p className="text-right mt-2  text-primary-white text-xl">
-                {description}
-              </p>
             </div>
           </div>
 
-          <div className="flex flex-col py-10">
+          <div className="flex flex-col py-10 p-10">
             <div className="flex gap-5 mb-6">
               <img src={arrow} alt="" />
               <p className="text-4xl text-primary-white font-light ">
@@ -149,7 +156,6 @@ const WorkDetail = () => {
               </motion.button>
             </div>
           </div>
-         
         </div>
         <Mailer />
         <Footer />

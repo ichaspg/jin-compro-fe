@@ -11,7 +11,7 @@ const Product = ({ products }) => {
   return (
     <>
       <Section>
-        <div className="max-container w-full padding" data-scroll-section>
+        <div className="w-full padding" data-scroll-section>
           <div className="padding-y">
             <p className="font-bold mt-5 text-3xl lg:text-5xl text-primary-white tracking-wider leading-none lg:w-[800px]">
               ELEVATE YOUR GAME AND SOAR WITH THIS BREAKTHROUGH PRODUCT
@@ -21,7 +21,7 @@ const Product = ({ products }) => {
               product, designed to help you reach new heights effortlessly!
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {productData.map((product) => (
               <ProductCard
                 key={product.id}
